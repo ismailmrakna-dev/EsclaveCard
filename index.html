@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Esclave - ECards</title>
     <link rel="stylesheet" href="./css/output.css">
 </head>
-<body>
-    <header>
+<body class="m-0 min-h-screen bg-[url('../assets/images/bg-accueil.png')] bg-cover bg-center bg-no-repeat text-white">
+    <header class="flex flex-wrap gap-8">
         <div>
             <img id="logo" src="" alt="">
             <h1>E - Cards </h1>
         </div>
-        <nav id="navigateur">
+        <nav id="navigateur" class="flex gap-8">
             <a href="">Accueil</a>
             <a href="">Jouer</a>
             <a href="">Profile</a>
@@ -24,25 +23,43 @@
             <img src="" alt="">
             <span id="name-profile"></span>
         </div>
+        <nav id="navigateur" class="hidden flex gap-8">
+            <a href="">Accueil</a>
+            <a href="">Jouer</a>
+            <a href="">Profile</a>
+            <a href="">Historique</a>
+            <a href="">Classement</a>
+        </nav>
     </header>
     <!--   ACCUEIL  -->
     <section id="acceuil-game" class="">
-        <div id="" class="">
-            <h1>EMPEREUR</h1>
-            <h1>. CITOYEN</h1>
-            <h1>ESCLAVE</h1>
-            <p>Un jeu simple, une société complexe</p>
-            <p>Choisis votre profile, défie l'ordinateur, grimpe dans le classement du club</p>
-            <div>
-                <button type="button">Commencer à jouer</button>
-                <button type="button">Voir les regles</button>
+        <div id="" class="p-4 mt-4 flex flex-col">
+            <h1 class="p-4 text-[#D4A64A] text-4xl font-extrabold">EMPEREUR</h1>
+            <h1 class="p-4 text-[#60A5FA] text-4xl font-extrabold">. CITOYEN</h1>
+            <h1 class="p-4 text-[#A78BFA] text-4xl font-extrabold">ESCLAVE</h1>
+            <p class="p-2 text-md">Un jeu simple, une société complexe</p>
+            <p class="p-2 text-md">Choisis votre profile, défie l'ordinateur, grimpe dans le classement du club</p>
+            <div class="p-2 mt-8">
+                <button type="button" class="m-2 p-4 w-full text-black bg-[#D4A64A] font-bold rounded-full">⏵Commencer à jouer</button>
+                <button type="button" class="m-2 p-4 w-full p-4 border font-bold rounded-full"> ◈ Voir les regles</button>
             </div>
         </div>
-        <div id="" class="">
-            <p>12 rounds</p>
-            <p>3 camps</p>
-            <p>1 seul vainqueur</p>
+        <div id="" class="mx-auto p-6 text-center text-xl w-60 max-w-60 text-gray-200 border rounded-xl">
+            <p> ⚔ 12 rounds</p>
+            <p> ★ 3 camps</p>
+            <p>🏆 1 seul vainqueur</p>
         </div>
-    </section>   
+    </section>
+    <footer>
+        <div class="">
+        <nav id="navigateur" class="flex bg-[#0B1220] gap-2 w-full mt-4 shadow-md text-lg p-2">
+            <a href="" class="p-2 px-4 flex flex-col hover:bg-[#17243A] hover:scale-103"><span class="text-center">🏠︎</span> Accueil</a>
+            <a href="" class="p-2 px-4 flex flex-col hover:bg-[#17243A] hover:scale-103"><span class="text-center">▷</span>Jouer</a>
+            <a href="" class="p-2 px-4 flex flex-col hover:bg-[#17243A] hover:scale-103"><span class="text-center">♙</span>Profile</a>
+            <a href="" class="p-2 px-4 flex flex-col hover:bg-[#17243A] hover:scale-103"><span class="text-center">◷</span>Historique</a>
+        </nav>
+        </div>
+
+    </footer>   
 </body>
 </html>
