@@ -113,7 +113,41 @@ function deleteProfile(idprofile){
     createProfiles()
 }
 // modify profile
-function modifyProfile(p){
-    
+function modifyProfile(prof){
+    const proContainer = document.querySelector("#profiles-container")
+    const form = document.querySelector("#create-profile form")
+    form.addEventListener("submit", (event) => {
+            event.preventDefault()
+            const { nom, avatar } = form.elements
+            nom.value=p.nickname
+            avatar.value=avatar.link
+            let isValid = true
+            if (isValidNom(nom)) {
+                profiles.forEach((p) => {
+                if(prof.id!==p.id) {    
+                    if (p.nom === nom) {
+                        isValid = false
+                        return
+                    }
+                }
+                })
+            }
+            if (!isValidNom(nom)) {
+                isValid = false
+                return
+
+            }
+            if (isValid) {
+                let index= profiles.find((p)=>p.id===prof.id)
+                if(index){
+                profiles[index].nickname=nom
+                profiles[index].avatar=avatar.link
+               }
+            }
+            proContainer.innerHTML = ""
+            createProfiles()
+            form.reset()
+        })
+
 }
 
