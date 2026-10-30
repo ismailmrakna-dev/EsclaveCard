@@ -28,8 +28,8 @@ function createProfile() {
                 const profile = {
                     id: "",
                     nickname: nom,
-                    avatar: avatar.name,
-                    image: avatar.link,
+                    avatar: avatar.textContent,
+                    image: avatar.value,
                     stats: {
                         parties: 0,
                         vic: [],
@@ -141,7 +141,8 @@ function modifyProfile(prof){
                 let index= profiles.find((p)=>p.id===prof.id)
                 if(index){
                 profiles[index].nickname=nom
-                profiles[index].avatar=avatar.link
+                profiles[index].avatar.image=avatar.value
+                profiles[index].avatar.name=avatar.textContent
                }
             }
             proContainer.innerHTML = ""
