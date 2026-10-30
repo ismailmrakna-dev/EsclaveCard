@@ -103,3 +103,17 @@ function showprofile(profile) {
         `
     show.appendChild(elem)    
 }
+
+/// Suprimmer profile
+function deleteProfile(idprofile){
+    let index= profiles.find((p)=>p.id===idprofile)
+    if(index){
+    profiles.filter((p)=>p.id!==idprofile)
+    }
+    createProfiles()
+}
+// modify profile
+function modifyProfile(p){
+    
+}
+
