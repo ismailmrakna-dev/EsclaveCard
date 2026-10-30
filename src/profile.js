@@ -152,3 +152,12 @@ function modifyProfile(prof){
 
 }
 
+// select un joueur
+function selectProfile(prof){
+    const headerprof=document.querySelector("#header-profile")
+    const name=document.querySelector("#header-profile #name-profile")
+
+
+
+}
+
