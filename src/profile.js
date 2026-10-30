@@ -46,6 +46,10 @@ function isValidNom(nom){
 function createProfiles(){
     const proContainer= document.querySelector("#profiles-container")
     const copy = profiles.slice()
-    
-
+    copy.forEach((p)=>{
+        const profile = document.createElement('div')
+        profile.className=""
+        profile.innerHTML=``
+        proContainer.appendChild(profile)
+    })
 }
