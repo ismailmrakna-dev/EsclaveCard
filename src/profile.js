@@ -14,12 +14,14 @@ function createProfile() {
                 profiles.forEach((p) => {
                     if (p.nom === nom) {
                         isValid = false
+                        return
 
                     }
                 })
             }
             if (!isValidNom(nom)) {
-                isValid = true
+                isValid = false
+                return
 
             }
             if (isValid) {
@@ -27,9 +29,9 @@ function createProfile() {
                     id: "",
                     nickname: nom,
                     avatar: avatar.name,
-                    image:  avatar.link,
+                    image: avatar.link,
                     stats: {
-                        parties:0,
+                        parties: 0,
                         vic: [],
                         draw: [],
                         lose: []
@@ -50,7 +52,7 @@ function isValidNom(nom) {
 function createProfiles() {
     const proContainer = document.querySelector("#profiles-container")
     const copy = profiles.slice()
-    proContainer.innerHTML=""
+    proContainer.innerHTML = ""
     copy.forEach((p) => {
         const profile = document.createElement('div')
         profile.className = "flex felx-col items-center justify-center w-full h-20 p-4 gap-4 "
@@ -61,13 +63,17 @@ function createProfiles() {
         <p>${p.stats.parties} Parties<p>
         </div>
         `
+        profile.style.cursor = "pointer";
+        profile.addEventListener("click", () => {
+            showprofile(p)
+        })
         const addbutton = document.createElement("button")
         addbutton.textContent = "✎"
         addbutton.className = " btn-edit bg-[#F5B942] p-2 rounded-md text-sm font-bold text-white hover:bg-[#F5B942]/90"
         addbutton.setAttribute()
         addbutton.addEventListener("click", (e) => {
             e.stopPropagation();
-           
+
         });
         const addbutton2 = document.createElement("button")
         addbutton2.textContent = "✖"
@@ -75,10 +81,25 @@ function createProfiles() {
         addbutton2.setAttribute()
         addbutton2.addEventListener("click", (e) => {
             e.stopPropagation();
-           
+
         });
         profile.appendChild(addbutton)
         profile.appendChild(addbutton2)
         proContainer.appendChild(profile)
     })
+}
+
+// show detail profile 
+function showprofile(profile) {
+    const show = querySelector("#detail-profile")
+    show.className=""
+    show.innerHTML = ""
+    const elem= document.createElement('div')
+    show.innerHTML = `
+        <img class="w-10 h-10 rounded-full border-white" src="${p.avatar.image}" alt="avatar ${p.avatar.name}">
+        <div class="flex flex-col items-center gap-2 p-2">
+        <h2>${p.nickname}</h2>
+        <p>${p.stats.parties} Parties<p>
+        `
+    show.appendChild(elem)    
 }
