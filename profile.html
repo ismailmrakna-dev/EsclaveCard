@@ -23,8 +23,7 @@
             <a href="">Classement</a>
         </nav>
         <div id="header-profile" class="flex items-center gap-2">
-            <img class="h-7 w-7 rounded-full" src="" alt="">
-            <span id="name-profile" class="text-lg font-semibold">Ismail</span>
+            
         </div>
         <p id="header-menu" class="text-lg font-semibold">☰</p>
     </header>
@@ -32,24 +31,51 @@
         <!--Gestion des Profiles creer, selection, modifier, show detail, suprimer -->
         <div id="profiles" class="m-4 bg-[#050811] min-h-screen rounded-xl">
             <!--Profile container-->
-            <div class="flex items-center gap-15 p-5">
+            <div class="relative flex items-center gap-15 p-5">
                 <h1 class="text-2xl font-bold">Mes Profiles</h1>
-                <button id="ajouterPro-btn" type="button" class=" w-1/3 p-2 bg-[#416A9B] text-md text-black bg-[#D4A64A] font-bold rounded-full hover:bg-[#D4A64A]/80 hover:scale-102">Ajouter un Profil</button>
+                <button id="ajouterPro-btn" type="button" class=" absolute top-2 right-2 p-2 bg-[#416A9B] m-2 text-md text-black bg-[#D4A64A] font-bold rounded-full hover:bg-[#D4A64A]/80 hover:scale-102">Ajouter un Profil</button>
             </div>
             <section id="profiles-container">
 
             </section>
             <!-- Creation profile-->
-            <section id="create-profile" class="hidden">
-                <form>
-                    <label>Entre Votre Pseudo</label>
-                    <input type="text">
-                    <label>Select your Avatar:</label>
-                    <select name="avatars" id="avatars">
+            <section id="create-profile" class="hidden bg-[#17243A] p-4 rounded-xl">
+                <div class="relative flex gap-12">
+                    <h1 class="text-xl pb-4 font-bold">Creer un profil:</h1>
+                    <button type="button" class="hide-create absolute top-2 right-2  py-1 px-2 bg-[#416A9B] text-md text-black bg-[#D4A64A] font-bold rounded-full hover:bg-[#D4A64A]/80 hover:scale-102">X</button>
+                </div>
+                
 
-                    </select>
-                    <button type="submit">Creer profile</button>
-                    <button type="reset">Effacer</button>
+                <form>
+                    <div class="grid grid-cols-2 w-full">
+                        <div class="p-2 mt-2">
+                            <label class="font-semibold p-2 mb-4">Pseudo:</label>
+                            <input class="px-4 w-6/7 mt-2 bg-white text-black rounded-xl" type="text">
+                        </div>
+                        <div id="avatars" class="flex flex-wrap gap-3 p-2 mt-2"> 
+                            <div id="character">
+                                <img class="rounded-full w-10 h-10 hover:scale-102" src="./assets/avatars/avatar1.jpg" alt="">
+                                <p class="hidden">hamouro</p>
+                            </div>
+                            <div id="character">
+                                <img class="rounded-full w-10 h-10 hover:scale-102" src="./assets/avatars/saitama-avatar.png" alt="">
+                                <p class="hidden">saitama 1</p>
+                            </div>
+                            <div id="character">
+                                <img class="rounded-full w-10 h-10 hover:scale-102" src="./assets/avatars/saitama2-avatar.png" alt="">
+                                <p class="hidden">saitama 2</p>
+                            </div>
+                            <div id="character">
+                                <img class="rounded-full w-10 h-10 hover:scale-102" src="./assets/avatars/kaiji-avatar.webp" alt="">
+                                <p class="hidden">kaiji</p>
+                            </div>
+                        </div>
+                        <p id="message" class="text-md"></p>
+                    </div>
+                    <div class="flex gap-4 py-4 mt-4">
+                        <button type="submit" class="p-2 w-full bg-[#416A9B] text-md text-black bg-[#D4A64A] font-bold rounded-full hover:bg-[#D4A64A]/80 hover:scale-102">Creer profile</button>
+                        <button type="reset" class="p-2 w-full bg-[#416A9B] text-md text-black bg-[#D4A64A] font-bold rounded-full hover:bg-[#D4A64A]/80 hover:scale-102">Effacer</button>
+                    </div>
                 </form>
             </section>
             <!-- show detail profile -->
