@@ -1,4 +1,4 @@
-const profilesdata=[
+let profilesdata=[
                 {
                     id: "125",
                     nickname: "jhvjk",
@@ -13,12 +13,12 @@ const profilesdata=[
                     createAt: "",
                 },
                 {
-                    id: "125",
+                    id: "115",
                     nickname: "tyhjklkj",
                     avatar: "kjbvb" ,
                     image: "./assets/avatars/saitama2-avatar.png" ,
                     stats: {
-                        parties: 0,
+                        parties: 10,
                         vic: [],
                         draw: [],
                         lose: []
