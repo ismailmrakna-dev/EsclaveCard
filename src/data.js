@@ -2,7 +2,7 @@ let profilesdata=[
                 {
                     id: "125",
                     nickname: "jhvjk",
-                    avatar: "dragon" ,
+                    avatar: "saitama 2" ,
                     image: './assets/avatars/saitama2-avatar.png' ,
                     stats: {
                         parties: 0,
@@ -15,7 +15,7 @@ let profilesdata=[
                 {
                     id: "115",
                     nickname: "tyhjklkj",
-                    avatar: "kjbvb" ,
+                    avatar: "saitama 2" ,
                     image: "./assets/avatars/saitama2-avatar.png" ,
                     stats: {
                         parties: 10,
