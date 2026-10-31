@@ -85,30 +85,32 @@ function createProfiles() {
         <div class="flex flex-col items-center gap-2 p-2">
         <h2>${p.nickname}</h2>
         <p>${p.stats.parties} Parties<p>
+        <div>
         `
         
-        // profile.style.cursor = "pointer";
-        // profile.addEventListener("click", () => {
-        //     showprofile(p)
-        // })
-        // const addbutton = document.createElement("button")
-        // addbutton.textContent = "✎"
-        // addbutton.className = " btn-edit bg-[#F5B942] p-2 rounded-md text-sm font-bold text-white hover:bg-[#F5B942]/90"
-        // addbutton.setAttribute()
-        // addbutton.addEventListener("click", (e) => {
-        //     e.stopPropagation();
+        profile.style.cursor= "pointer";
+        profile.addEventListener("click", (e) => {
+            e.stopPropagation()
+            showprofile(p.id)
+        })
+        const addbutton = document.createElement("button")
+        addbutton.textContent = "✎"
+        addbutton.className = "btn-edit bg-[#F5B942] p-2 rounded-md text-sm font-bold text-white hover:bg-[#F5B942]/90"
+        addbutton.setAttribute("idMod",p.id)
+        addbutton.addEventListener("click", (e) => {
+           e.stopPropagation() 
+           modifyProfile(p.id)
+        });
+        const addbutton2 = document.createElement("button")
+        addbutton2.textContent = "✖"
+        addbutton2.className = " btn-suprime bg-[#F5B942] p-2 rounded-md text-sm font-bold text-white hover:bg-[#F5B942]/90"
+        addbutton2.setAttribute("idDel",p.id)
+        addbutton2.addEventListener("click", (e) => {
+            deleteProfile(p.id)
 
-        // });
-        // const addbutton2 = document.createElement("button")
-        // addbutton2.textContent = "✖"
-        // addbutton2.className = " btn-suprime bg-[#F5B942] p-2 rounded-md text-sm font-bold text-white hover:bg-[#F5B942]/90"
-        // addbutton2.setAttribute()
-        // addbutton2.addEventListener("click", (e) => {
-        //     e.stopPropagation();
-
-        // });
-        // profile.appendChild(addbutton)
-        // profile.appendChild(addbutton2)
+        });
+        profile.appendChild(addbutton)
+        profile.appendChild(addbutton2)
         proContainer.appendChild(profile)
     })
 }
@@ -117,25 +119,24 @@ createProfiles()
 
 // show detail profile 
 function showprofile(prof) {
-    const show = querySelector("#detail-profile")
-    show.className = ""
+    const show = document.querySelector("#detail-profile")
     show.innerHTML = ""
     const elem = document.createElement('div')
-    show.innerHTML = `
-        <img class="w-10 h-10 rounded-full border-white" src="${prof.avatar.image}" alt="avatar ${prof.avatar.name}">
+    elem.innerHTML = `
+        <img class="w-10 h-10 rounded-full border-white" src="${prof.image}" alt="avatar ${prof.avatar}">
         <div class="flex flex-col items-center gap-2 p-2">
         <h2>${prof.nickname}</h2>
         <p>${prof.stats.parties} Parties<p>
         `
     show.appendChild(elem)
-}
 
+}
 
 /// Suprimmer profile
 function deleteProfile(idprofile) {
     let index = profilesdata.find((p) => p.id === idprofile)
     if (index) {
-        profilesdata.filter((p) => p.id !== idprofile)
+        profilesdata=profilesdata.filter((p) => p.id !== idprofile)
     }
     createProfiles()
 }
