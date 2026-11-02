@@ -1,6 +1,6 @@
 let profilesdata=[
                 {
-                    id: "125",
+                    id: "1255",
                     nickname: "jhvjk",
                     avatar: "saitama 2" ,
                     image: './assets/avatars/saitama2-avatar.png' ,
