@@ -7,3 +7,68 @@
     <title>Esclave - ECards</title>
     <link rel="stylesheet" href="./css/output.css">
 </head>
+
+<body class=" relative m-0 bg-[url('../assets/images/bg-accueil.png')] bg-cover bg-center bg-no-repeat text-white">
+    <header class=" w-full flex flex-wrap items-center p-2 gap-4">
+        <div class=" flex items-center gap-2 p-2 mr-6">
+            <img id="logo" class="w-20 h-20" src="./assets/images/logo-web.png" alt="">
+            <h1 class="font-bold text-xl text-[#EF4444] my-auto p-2"><span
+                    class="text-2xl text-[#A78BFA]">E-</span>Cards </h1>
+        </div>
+        <nav id="navigateur" class="hidden flex gap-8">
+            <a href="">Accueil</a>
+            <a href="game.html">Jouer</a>
+            <a href="profile.html">Profile</a>
+            <a href="history.html">Historique</a>
+            <a href="ranking.html">Classement</a>
+        </nav>
+        <div id="header-profile" class="flex items-center gap-2">
+            
+        </div>
+        <p id="header-menu" class="absolute top-1 right-2 text-lg font-semibold">☰</p>
+    </header>
+    <main>
+        <!-- Contenu principal du jeu -->
+        <div id="game-container" class="p-2 w-full mx-auto rounded-xl mb-4 md:h-auto lg:h-auto md:w-3/4 lg:w-1/2 bg-[#050811]">
+            <div id="game-header" class="p-4 w-full mx-auto h-10 p-4 rounded-md bg-[#17243A] flex justify-center items-center">
+                <div id="Manche" class="text-xl  font-bold p-4">Manche: X/12</div>
+                <div id="round" class="text-lg  p-4">Tour: X/4</div>
+            </div>
+            <div id="ordinator-game" class=" flex h-10 flex gap-4 justify-center p-4 mb-2">
+                <h1 class="text-xl font-bold">Ordinateur</h1>
+                <p id="computer-score" class="text-lg font-bold">score: 0</p>
+                <p id="computer-camp" class="text-lg font-bold">camp: </p>
+            </div>
+            <section id="game-board" class="w-full p-2 rounded-xl">
+                <!-- Plateau de jeu -->
+                 <img src="./assets/images/bg-board-green.png" alt="Plateau de jeu" class=" object-cover  object-center mx-auto w-100 h-120 md:w-full lg:w-180 md:h-auto lg:h-200">
+            </section>
+            <div id="player-game" class=" flex flex h-10 gap-2 justify-center p-4 mb-2">
+                <img src="./assets/avatars/saitama-avatar.png" alt="Avatar du joueur" class="w-8 h-8 rounded-full border-white">
+                <h1 class="text-xl font-bold my-auto mr-4">Ismail</h1>
+                <p id="player-score" class="my-auto text-lg font-bold">score: 0</p>
+                <p id="player-camp" class="my-auto text-lg font-bold">camp: </p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bottom-0 left-0 right-0 md:hidden lg:hidden">
+        <nav id="navigateur-buttom"
+            class="bg-[#0B1220] grid grid-cols-4 gap-2 w-full shadow-md  text-lg border-t border-white/20">
+            <a href="index.html" class="p-2 px-2 flex flex-col hover:bg-[#17243A] hover:scale-103"><span
+                    class="text-center">🏠︎</span> Accueil</a>
+            <a href="game.html" class="p-2 px-4 flex flex-col hover:bg-[#17243A] hover:scale-103"><span
+                    class="text-center">▷</span>Jouer</a>
+            <a href="profile.html" class="p-2 px-4 flex flex-col hover:bg-[#17243A] hover:scale-103"><span
+                    class="text-center">♙</span>Profile</a>
+            <a href="history.html" class="p-2 px-2 flex flex-col hover:bg-[#17243A] hover:scale-103"><span
+                    class="text-center">◷</span>Historique</a>
+        </nav>
+    </footer>
+    <script src="./src/data.js"></script>
+    <script src="./src/profile.js"></script>
+    <script src="./src/game.js"></script>
+    <script src="./src/game/card.js"></script>
+</body>
+
+</html>
