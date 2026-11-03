@@ -28,49 +28,51 @@ function createAllCards(camp1, camp2) {
     cardsplayer.querySelectorAll(".card-player").forEach(card => card.innerHTML = "");
     const campEmperor = ['empereur', 'citoyen', 'citoyen', 'citoyen', 'citoyen'];
     const campEsclave = ['esclave', 'citoyen', 'citoyen', 'citoyen', 'citoyen'];
+    copycamp1 = [...campEmperor];
+    copycamp2 = [...campEsclave];
+    
 
     //// computer cards
     if (camp1 === "empereur") {
         cardsOrdinator.querySelectorAll(".card-ordinator").forEach((card) => {
-           for (let i = 0; i < campEmperor.length; i++) {
-                const c = cards.find(c => c.id === campEmperor[i]);
-                console.log(c);
-                card.innerHTML = `
-               <img src="${c.image}" alt="${c.nomcard}" class="card-front w-full h-full">
+            const  randomIndex = Math.floor(Math.random() * copycamp1.length);
+            const cd = cards.find(c => c.id.toLowerCase().trim() === copycamp1[randomIndex].toLowerCase().trim());
+            copycamp1.splice(randomIndex, 1);
+            card.innerHTML = `
+               <img src="${cd.image}" alt="${cd.nomcard}" class="card-front w-full h-full">
                `;
-            }
         });
     }
     else if (camp1 === "esclave") {
         cardsOrdinator.querySelectorAll(".card-ordinator").forEach((card) => {
-            for (let i = 0; i < campEsclave.length; i++) {
-                const c = cards.find(c => c.id === campEsclave[i]);
-                card.innerHTML = `
-        <img src="${c.image}" alt="${c.nomcard}" class="card-front w-full h-full">
-    `;
-            }
+            const  randomIndex = Math.floor(Math.random() * copycamp2.length);
+            const cd = cards.find(c => c.id.toLowerCase().trim() === copycamp2[randomIndex].toLowerCase().trim());
+            copycamp2.splice(randomIndex, 1);
+            card.innerHTML = `
+               <img src="${cd.image}" alt="${cd.nomcard}" class="card-front w-full h-full">
+               `;
         })
     }
     ///player cards
     if (camp2 === "empereur") {
         cardsplayer.querySelectorAll(".card-player").forEach((card) => {
-        for (let i = 0; i < campEmperor.length; i++) {
-                const c = cards.find(c => c.id === campEmperor[i]);
-                card.innerHTML = `
-        <img src="${c.image}" alt="${c.nomcard}" class="card-front w-full h-full">
-    `;
-            }
+        const  randomIndex = Math.floor(Math.random() * copycamp1.length);
+        const cd = cards.find(c => c.id.toLowerCase().trim() === copycamp1[randomIndex].toLowerCase().trim());
+        copycamp1.splice(randomIndex, 1);
+        card.innerHTML = `
+            <img src="${cd.image}" alt="${cd.nomcard}" class="card-front w-full h-full">
+        `;
 
         });
     }
     else if (camp2 === "esclave") {
         cardsplayer.querySelectorAll(".card-player").forEach((card) => {
-            for (let i = 0; i < campEsclave.length; i++) {
-                const cd = cards.find(c => c.id === campEsclave[i]);
-                card.innerHTML = `
-        <img src="${cd.image}" alt="${cd.nomcard}" class="card-front w-full h-full">
-    `;
-            }
+            const  randomIndex = Math.floor(Math.random() * copycamp2.length);
+            const cd = cards.find(c => c.id.toLowerCase().trim() === copycamp2[randomIndex].toLowerCase().trim());
+            copycamp2.splice(randomIndex, 1);
+            card.innerHTML = `
+                <img src="${cd.image}" alt="${cd.nomcard}" class="card-front w-full h-full">
+            `;
         })
     }
 }
