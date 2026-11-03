@@ -1009,6 +1009,9 @@
     .lg\:w-140 {
       width: calc(var(--spacing) * 140);
     }
+    .lg\:w-160 {
+      width: calc(var(--spacing) * 160);
+    }
     .lg\:w-180 {
       width: calc(var(--spacing) * 180);
     }
