@@ -23,6 +23,10 @@ const cards = [
 
 function createAllCards(camp1, camp2) {
     const cardsOrdinator = document.getElementById("cards-ordinator");
+    const gamep1 = document.getElementById("p-card1");
+    gamep1.innerHTML = "";
+    const gamep2 = document.getElementById("p-card2");
+    gamep2.innerHTML = "";
     cardsOrdinator.querySelectorAll(".card-ordinator").forEach(card => card.innerHTML = "");
     const cardsplayer = document.getElementById("cards-player");
     cardsplayer.querySelectorAll(".card-player").forEach(card => card.innerHTML = "");
@@ -78,10 +82,55 @@ function createAllCards(camp1, camp2) {
 }
 createAllCards("empereur", "esclave");
 
-function moveCard(cardId, targetId) {
-    const card = document.getElementById(cardId);
+function moveCard(card, targetId) {
     const target = document.getElementById(targetId);
     target.innerHTML = "";
-    target.innerHTML = card.innerHTML;
+    target.appendChild(card);
 }
+function startGame() {
+    
+    const cardsOrdinator = document.getElementById("cards-ordinator");
+    const cardsplayer = document.getElementById("cards-player");
+    
+    let camp1 = "empereur";
+    let camp2 = "esclave";
+    createAllCards(camp1, camp2);
+    let round = 1;
+        let cmp = 0;
+        console.log( "camp1:", camp1, "camp2:", camp2);
+    cardsOrdinator.addEventListener("click", (event) => {
+        const cardOr = event.target.closest(".card-ordinator")
+        const img = cardOr.querySelector("img");
+        cmp++;
+        if(round>12) {
+            return alert("Game Over");
+        }
+        console.log("cmp:", cmp);
+        moveCard(img, "p-card1");
+        if(cmp==5){ 
+        cmp = 0;
+        if(round%3===0){let temp = camp1; camp1 = camp2; camp2 = temp;}
+        createAllCards(camp1, camp2);
+        round++;
+    }
+    cardsplayer.addEventListener("click", (e) => {
+        const cardPl = e.target.closest(".card-player");
+        console.log(cardPl);
+        const img = cardPl.querySelector("img");
+        moveCard(img, "p-card2");
+        })
+    
+    });
+    // cardsplayer.addEventListener("click", (e) => {
+    //     const cardPl = e.target.closest(".card-player");
+    //     console.log(cardPl);
+    //     const img = cardPl.querySelector("img");
+    //     moveCard(img, "p-card2");
+    //     })
+       
+}
+
+
+startGame();
+
 
