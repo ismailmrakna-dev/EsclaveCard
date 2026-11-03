@@ -449,6 +449,62 @@
   .border-collapse {
     border-collapse: collapse;
   }
+  .translate-x-\[\+2px\] {
+    --tw-translate-x: +2px;
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .translate-x-\[\+3px\] {
+    --tw-translate-x: +3px;
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .translate-x-\[\+5px\] {
+    --tw-translate-x: +5px;
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .translate-x-\[-2px\] {
+    --tw-translate-x: -2px;
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .translate-x-\[-3px\] {
+    --tw-translate-x: -3px;
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .translate-x-\[-4px\] {
+    --tw-translate-x: -4px;
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .translate-x-\[-5px\] {
+    --tw-translate-x: -5px;
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .translate-x-\[-7px\] {
+    --tw-translate-x: -7px;
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .translate-x-\[-10px\] {
+    --tw-translate-x: -10px;
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .translate-x-\[-15px\] {
+    --tw-translate-x: -15px;
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .translate-x-\[0px\] {
+    --tw-translate-x: 0px;
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .translate-x-\[2px\] {
+    --tw-translate-x: 2px;
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .translate-x-\[3px\] {
+    --tw-translate-x: 3px;
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .translate-x-\[4px\] {
+    --tw-translate-x: 4px;
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
   .translate-x-\[10px\] {
     --tw-translate-x: 10px;
     translate: var(--tw-translate-x) var(--tw-translate-y);
@@ -457,8 +513,40 @@
     --tw-translate-x: 15px;
     translate: var(--tw-translate-x) var(--tw-translate-y);
   }
+  .translate-y-\[\+57px\] {
+    --tw-translate-y: +57px;
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
   .translate-y-\[-10px\] {
     --tw-translate-y: -10px;
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .translate-y-\[-20px\] {
+    --tw-translate-y: -20px;
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .translate-y-\[-26px\] {
+    --tw-translate-y: -26px;
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .translate-y-\[-40px\] {
+    --tw-translate-y: -40px;
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .translate-y-\[-57px\] {
+    --tw-translate-y: -57px;
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .translate-y-\[-70px\] {
+    --tw-translate-y: -70px;
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .translate-y-\[-77px\] {
+    --tw-translate-y: -77px;
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .translate-y-\[0px\] {
+    --tw-translate-y: 0px;
     translate: var(--tw-translate-x) var(--tw-translate-y);
   }
   .translate-y-\[10px\] {
@@ -467,6 +555,54 @@
   }
   .translate-y-\[20px\] {
     --tw-translate-y: 20px;
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .translate-y-\[24px\] {
+    --tw-translate-y: 24px;
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .translate-y-\[25px\] {
+    --tw-translate-y: 25px;
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .translate-y-\[26px\] {
+    --tw-translate-y: 26px;
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .translate-y-\[30px\] {
+    --tw-translate-y: 30px;
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .translate-y-\[35px\] {
+    --tw-translate-y: 35px;
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .translate-y-\[40px\] {
+    --tw-translate-y: 40px;
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .translate-y-\[45px\] {
+    --tw-translate-y: 45px;
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .translate-y-\[50px\] {
+    --tw-translate-y: 50px;
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .translate-y-\[55px\] {
+    --tw-translate-y: 55px;
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .translate-y-\[57px\] {
+    --tw-translate-y: 57px;
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .translate-y-\[70px\] {
+    --tw-translate-y: 70px;
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .translate-y-\[77px\] {
+    --tw-translate-y: 77px;
     translate: var(--tw-translate-x) var(--tw-translate-y);
   }
   .rotate-45 {
@@ -487,6 +623,12 @@
   .rotate-\[-25deg\] {
     rotate: -25deg;
   }
+  .rotate-\[-27deg\] {
+    rotate: -27deg;
+  }
+  .rotate-\[-30deg\] {
+    rotate: -30deg;
+  }
   .rotate-\[-35deg\] {
     rotate: -35deg;
   }
@@ -495,6 +637,18 @@
   }
   .rotate-\[-45deg\] {
     rotate: -45deg;
+  }
+  .rotate-\[0deg\] {
+    rotate: 0deg;
+  }
+  .rotate-\[10deg\] {
+    rotate: 10deg;
+  }
+  .rotate-\[17deg\] {
+    rotate: 17deg;
+  }
+  .rotate-\[30deg\] {
+    rotate: 30deg;
   }
   .resize {
     resize: both;
