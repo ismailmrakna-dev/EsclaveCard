@@ -1,34 +1,79 @@
-const cards =[
-    {   id: "esclave",
+const cards = [
+    {
+        id: "esclave",
         nomcard: "Esclave",
         image: "./assets/cards/slave.card.jpg",
         back: "./assets/cards/card-back.png",
     },
-    {   id: "empereur",
+    {
+        id: "empereur",
         nomcard: "Empereur",
         image: "./assets/cards/emperor-card.jpg",
         back: "./assets/cards/card-back.png",
     },
-    {   id: "citoyen",
+    {
+        id: "citoyen",
         nomcard: "citoyen",
-        image: "../assets/cards/citizen.card.jpg",
+        image: "./assets/cards/citizen.card.jpg",
         back: "./assets/cards/card-back.png",
     }
 ]
-function createcard(card){
-    const cardElement = document.createElement("div");
-    cardElement.classList.add("card");
-    cardElement.setAttribute("data-id", card.id);
-    cardElement.innerHTML = `
-        <div class="card-back w-6 h-12">
-        <img src="${card.back}" alt="${card.nomcard}" class="card-back w-full h-full">
-        </div>
-        <div class="card-front w-6 h-12">
-        <img src="${card.image}" alt="${card.nomcard}" class="card-front w-full h-full">
-        </div>
-    `;
-    return cardElement;
-}
 
+
+
+function createAllCards(camp1, camp2) {
+    const cardsOrdinator = document.getElementById("cards-ordinator");
+    cardsOrdinator.querySelectorAll(".card-ordinator").forEach(card => card.innerHTML = "");
+    const cardsplayer = document.getElementById("cards-player");
+    cardsplayer.querySelectorAll(".card-player").forEach(card => card.innerHTML = "");
+    const campEmperor = ['empereur', 'citoyen', 'citoyen', 'citoyen', 'citoyen'];
+    const campEsclave = ['esclave', 'citoyen', 'citoyen', 'citoyen', 'citoyen'];
+
+    //// computer cards
+    if (camp1 === "empereur") {
+        cardsOrdinator.querySelectorAll(".card-ordinator").forEach((card) => {
+           for (let i = 0; i < campEmperor.length; i++) {
+                const c = cards.find(c => c.id === campEmperor[i]);
+                console.log(c);
+                card.innerHTML = `
+               <img src="${c.image}" alt="${c.nomcard}" class="card-front w-full h-full">
+               `;
+            }
+        });
+    }
+    else if (camp1 === "esclave") {
+        cardsOrdinator.querySelectorAll(".card-ordinator").forEach((card) => {
+            for (let i = 0; i < campEsclave.length; i++) {
+                const c = cards.find(c => c.id === campEsclave[i]);
+                card.innerHTML = `
+        <img src="${c.image}" alt="${c.nomcard}" class="card-front w-full h-full">
+    `;
+            }
+        })
+    }
+    ///player cards
+    if (camp2 === "empereur") {
+        cardsplayer.querySelectorAll(".card-player").forEach((card) => {
+        for (let i = 0; i < campEmperor.length; i++) {
+                const c = cards.find(c => c.id === campEmperor[i]);
+                card.innerHTML = `
+        <img src="${c.image}" alt="${c.nomcard}" class="card-front w-full h-full">
+    `;
+            }
+
+        });
+    }
+    else if (camp2 === "esclave") {
+        cardsplayer.querySelectorAll(".card-player").forEach((card) => {
+            for (let i = 0; i < campEsclave.length; i++) {
+                const cd = cards.find(c => c.id === campEsclave[i]);
+                card.innerHTML = `
+        <img src="${cd.image}" alt="${cd.nomcard}" class="card-front w-full h-full">
+    `;
+            }
+        })
+    }
+}
+createAllCards("empereur", "esclave");
 
 
