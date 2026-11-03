@@ -78,4 +78,10 @@ function createAllCards(camp1, camp2) {
 }
 createAllCards("empereur", "esclave");
 
+function moveCard(cardId, targetId) {
+    const card = document.getElementById(cardId);
+    const target = document.getElementById(targetId);
+    target.innerHTML = "";
+    target.innerHTML = card.innerHTML;
+}
 
