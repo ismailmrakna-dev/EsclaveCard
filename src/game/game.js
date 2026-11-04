@@ -1,23 +1,24 @@
-function compareCards(card1, card2) {
-   if (card1.id === card2.id) {
+function compareCards(str1, str2) {
+   if (str1 === str2) {
      return 0;
    }
-   else if (card1.id === "empereur" && card2.id === "esclave") {
+   else if (str1 === "empereur" && str2 === "esclave") {
         return 0;
     }
-    else if (card1.id === "esclave" && card2.id === "empereur") {
+    else if (str1 === "esclave" && str2 === "empereur") {
         return 5;
     }
-    else if (card1.id === "empereur" && card2.id === "citoyen") {
+    else if (str1 === "empereur" && str2 === "citoyen") {
         return 1;
     }
-    else if (card1.id === "citoyen" && card2.id === "empereur") {
+    else if (str1 === "citoyen" && str2 === "empereur") {
         return 0;
     }
-    else if (card1.id === "esclave" && card2.id === "citoyen") {
+    else if (str1 === "esclave" && str2 === "citoyen") {
         return 0;
     }
-    else if (card1.id === "citoyen" && card2.id === "esclave") {
+    else if (str1 === "citoyen" && str2 === "esclave") {
         return 1;
     }
 }
+
