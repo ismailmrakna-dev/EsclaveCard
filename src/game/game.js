@@ -1,23 +1,23 @@
-function compareCards(str1, str2) {
-   if (str1 === str2) {
+export function compareCards(playerCard, computerCard) {
+   if (playerCard === computerCard) {
      return 0;
    }
-   else if (str1 === "empereur" && str2 === "esclave") {
+   else if (playerCard === "empereur" && computerCard === "esclave") {
         return 0;
     }
-    else if (str1 === "esclave" && str2 === "empereur") {
+    else if (playerCard === "esclave" && computerCard === "empereur") {
         return 5;
     }
-    else if (str1 === "empereur" && str2 === "citoyen") {
+    else if (playerCard === "empereur" && computerCard === "citoyen") {
         return 1;
     }
-    else if (str1 === "citoyen" && str2 === "empereur") {
+    else if (playerCard === "citoyen" && computerCard === "empereur") {
         return 0;
     }
-    else if (str1 === "esclave" && str2 === "citoyen") {
+    else if (playerCard === "esclave" && computerCard === "citoyen") {
         return 0;
     }
-    else if (str1 === "citoyen" && str2 === "esclave") {
+    else if (playerCard === "citoyen" && computerCard === "esclave") {
         return 1;
     }
 }
