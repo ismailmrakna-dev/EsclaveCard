@@ -97,20 +97,23 @@ function startGame() {
     let camp2 = "esclave";
     createAllCards(camp1, camp2);
     let round = 1;
-        let cmp = 0;
-        console.log( "camp1:", camp1, "camp2:", camp2);
+    let cmp = 0;
+    console.log( "camp1:", camp1, "camp2:", camp2);
+    let cd={};
+    cd.used = true; 
     cardsplayer.addEventListener("click", (event) => {
         const cardpla = event.target.closest(".card-player")
         const img = cardpla.querySelector("img");
         moveCard(img, "p-card2");
         setTimeout(()=>{
+        while(cd.used) {    
         const  randomIndex = Math.floor(Math.random() * cardsOrdinator.length);
-        const cd = cardsOrdinator[randomIndex];
+        cd = cardsOrdinator[randomIndex]
         console.log(cd, cardsOrdinator)
+        }
+        cd.used=true;
         const img1 = cd.querySelector("img");
         moveCard(img1, "p-card1");
-        cardsOrdinator.splice(randomIndex, 1);
-
          cmp++;
         if(round>12) {
             return alert("Game Over");
