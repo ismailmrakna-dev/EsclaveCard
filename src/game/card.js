@@ -32,6 +32,10 @@ function createAllCards(camp1, camp2) {
     cardsplayer.querySelectorAll(".card-player").forEach(card => card.innerHTML = "");
     const campEmperor = ['empereur', 'citoyen', 'citoyen', 'citoyen', 'citoyen'];
     const campEsclave = ['esclave', 'citoyen', 'citoyen', 'citoyen', 'citoyen'];
+    [...cardsOrdinator.querySelectorAll(".card-ordinator"), ...cardsplayer.querySelectorAll(".card-player")].forEach(card => {
+        card.innerHTML = "";
+        card.used = false;
+    });
     copycamp1 = [...campEmperor];
     copycamp2 = [...campEsclave];
     
