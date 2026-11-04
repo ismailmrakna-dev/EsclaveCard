@@ -19,6 +19,29 @@ const cards = [
     }
 ]
 
+function compareCards(playerCard, computerCard) {
+   if (playerCard === computerCard) {
+     return 0;
+   }
+   else if (playerCard === "empereur" && computerCard === "esclave") {
+        return 0;
+    }
+    else if (playerCard === "esclave" && computerCard === "empereur") {
+        return 5;
+    }
+    else if (playerCard === "empereur" && computerCard === "citoyen") {
+        return 1;
+    }
+    else if (playerCard === "citoyen" && computerCard === "empereur") {
+        return 0;
+    }
+    else if (playerCard === "esclave" && computerCard === "citoyen") {
+        return 0;
+    }
+    else if (playerCard === "citoyen" && computerCard === "esclave") {
+        return 1;
+    }
+}
 
 
 function createAllCards(camp1, camp2) {
@@ -93,8 +116,11 @@ function moveCard(card, targetId) {
 }
 
 function startGame() {
-    
-    
+    const playc2=document.getElementById("p-card2");
+    const playc1=document.getElementById("p-card1");
+    playc2.innerHTML="";
+    playc1.innerHTML="";
+
     const cardsplayer = document.getElementById("cards-player");
     
     let camp1 = "empereur";
@@ -103,10 +129,13 @@ function startGame() {
     let round = 1;
     let cmp = 0;
     let isplayerTurn = false;
+    let scoreordinator = 0;
+    let scoreplayer = 0;
     createAllCards(camp1, camp2);
     console.log( "camp1:", camp1, "camp2:", camp2);
     cardsplayer.addEventListener("click", (event) => {
         const cardpla = event.target.closest(".card-player")
+        console.log( "camp1:", camp1, "camp2:", camp2);
         if(!cardpla || isplayerTurn || cardpla.used) return;
         isplayerTurn = true;
         cardpla.used = true;
@@ -119,37 +148,58 @@ function startGame() {
 
         const  randomIndex = Math.floor(Math.random() * copycardsOrdinator.length);
         const cd = copycardsOrdinator[randomIndex]
-        console.log(cd, copycardsOrdinator)
+        
         cd.used=true;
         const img1 = cd.querySelector("img");
         moveCard(img1, "p-card1");
+        setTimeout(()=>{
+            playc2.innerHTML="";
+            playc1.innerHTML="";}, 500)
+        scoreplayer += compareCards(img.alt.toLowerCase().trim(), img1.alt.toLowerCase().trim());
+        scoreordinator += compareCards(img1.alt.toLowerCase().trim(), img.alt.toLowerCase().trim());
+        console.log("scoreplayer:", scoreplayer, "scoreordinator:", scoreordinator);
+        setTimeout(()=>{
+        if((img.alt.toLowerCase().trim()==='empereur' && img1.alt.toLowerCase().trim()==='esclave') || (img.alt.toLowerCase().trim()==='esclave' && img1.alt.toLowerCase().trim()==='empereur')
+         || (img.alt.toLowerCase().trim()==='empereur' && img1.alt.toLowerCase().trim()==='citoyen') || (img.alt.toLowerCase().trim()==='citoyen' && img1.alt.toLowerCase().trim()==='empereur'
+         ) || (img.alt.toLowerCase().trim()==='esclave' && img1.alt.toLowerCase().trim()==='citoyen') || (img.alt.toLowerCase().trim()==='citoyen' && img1.alt.toLowerCase().trim()==='esclave')) {
+            
+                if(round>12) {
+                    return alert("Game Over");
+                }
+                if(round%3===0){let temp = camp1; camp1 = camp2; camp2 = temp;}
+                round++;
+                if(round>12) {
+                    alert("Game Over");
+                    return;
+                }
+                createAllCards(camp1, camp2);
+                isplayerTurn = false;
+                
+        }
+        
         cmp++;
 
         if(cmp==5){ 
         cmp = 0;
         if(round>12) {
-            return alert("Game Over");
+            alert("Game Over");
+            return 
         }
         if(round%3===0){let temp = camp1; camp1 = camp2; camp2 = temp;}
         round++;
-        if(round>12) {
-            alert("Game Over")
-            return;
-        }
+        playc2.innerHTML="";
+        playc1.innerHTML="";
         createAllCards(camp1, camp2);
+
+
        }
 
-       isplayerTurn = false;
-        },1000)
+       isplayerTurn = false;},2000)
+        },1500)
 
     });     
 }
 startGame()
-
-
-
-
-
 
 
 ////2 players
