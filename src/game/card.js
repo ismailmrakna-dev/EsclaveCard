@@ -92,41 +92,52 @@ function startGame() {
     
     
     const cardsplayer = document.getElementById("cards-player");
-    const cardsOrdinator = document.querySelectorAll("#cards-ordinator .card-ordinator");
+    
     let camp1 = "empereur";
     let camp2 = "esclave";
-    createAllCards(camp1, camp2);
+    
     let round = 1;
     let cmp = 0;
+    let isplayerTurn = false;
+    createAllCards(camp1, camp2);
     console.log( "camp1:", camp1, "camp2:", camp2);
-    let cd={};
-    cd.used = true; 
     cardsplayer.addEventListener("click", (event) => {
         const cardpla = event.target.closest(".card-player")
+        if(!cardpla || isplayerTurn || cardpla.used) return;
+        isplayerTurn = true;
+        cardpla.used = true;
         const img = cardpla.querySelector("img");
         moveCard(img, "p-card2");
         setTimeout(()=>{
-        while(cd.used) {    
-        const  randomIndex = Math.floor(Math.random() * cardsOrdinator.length);
-        cd = cardsOrdinator[randomIndex]
-        console.log(cd, cardsOrdinator)
-        }
+        const cardsOrdinator = document.querySelectorAll("#cards-ordinator .card-ordinator");
+        const copycardsOrdinator = [...cardsOrdinator].filter(card => !card.used);
+        if(copycardsOrdinator.length === 0) {  isplayerTurn = false; return; }  
+
+        const  randomIndex = Math.floor(Math.random() * copycardsOrdinator.length);
+        const cd = copycardsOrdinator[randomIndex]
+        console.log(cd, copycardsOrdinator)
         cd.used=true;
         const img1 = cd.querySelector("img");
         moveCard(img1, "p-card1");
-         cmp++;
+        cmp++;
+
+        if(cmp==5){ 
+        cmp = 0;
         if(round>12) {
             return alert("Game Over");
         }
-        if(cmp==5){ 
-        cmp = 0;
         if(round%3===0){let temp = camp1; camp1 = camp2; camp2 = temp;}
-        createAllCards(camp1, camp2);
         round++;
+        if(round>12) {
+            alert("Game Over")
+            return;
+        }
+        createAllCards(camp1, camp2);
        }
-        
+
+       isplayerTurn = false;
         },1000)
-        
+
     });     
 }
 startGame()
