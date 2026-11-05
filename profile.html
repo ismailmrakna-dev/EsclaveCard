@@ -9,7 +9,7 @@
 </head>
 
 <body class="m-0 min-h-screen bg-[url('../assets/images/bg-accueil.png')] bg-cover bg-center bg-no-repeat text-white">
-    <header class="flex flex-wrap items-center p-2 gap-4">
+    <header class="relative w-full flex flex-wrap items-center p-2 gap-4">
         <div class=" flex items-center gap-2 p-2 mr-6">
             <img id="logo" class="w-20 h-20" src="./assets/images/logo-web.png" alt="">
             <h1 class="font-bold text-xl text-[#EF4444] my-auto p-2"><span
@@ -25,7 +25,7 @@
         <div id="header-profile" class="flex items-center gap-2">
             
         </div>
-        <p id="header-menu" class="text-lg font-semibold">☰</p>
+        <p id="header-menu" class="absolute top-1 right-2 text-lg font-semibold">☰</p>
     </header>
     <main>
         <!--Gestion des Profiles creer, selection, modifier, show detail, suprimer -->
@@ -83,22 +83,22 @@
             </section>
         </div>
     </main>
-    <footer class="fixed shrink-0 bottom-0 left-0 right-0">
+    <footer class="bottom-0 left-0 right-0 md:hidden lg:hidden">
         <nav id="navigateur-buttom"
             class="bg-[#0B1220] grid grid-cols-4 gap-2 w-full shadow-md text-lg border-t border-white/20">
-            <a href="" class="p-2 px-2 flex flex-col hover:bg-[#17243A] hover:scale-103"><span
+            <a href="index.html" class="p-2 px-2 flex flex-col hover:bg-[#17243A] hover:scale-103"><span
                     class="text-center">🏠︎</span> Accueil</a>
-            <a href="" class="p-2 px-4 flex flex-col hover:bg-[#17243A] hover:scale-103"><span
+            <a href="game.html" class="p-2 px-4 flex flex-col hover:bg-[#17243A] hover:scale-103"><span
                     class="text-center">▷</span>Jouer</a>
-            <a href="" class="p-2 px-4 flex flex-col hover:bg-[#17243A] hover:scale-103"><span
+            <a href="profile.html" class="p-2 px-4 flex flex-col hover:bg-[#17243A] hover:scale-103"><span
                     class="text-center">♙</span>Profile</a>
-            <a href="" class="p-2 px-2 flex flex-col hover:bg-[#17243A] hover:scale-103"><span
+            <a href="history.html" class="p-2 px-2 flex flex-col hover:bg-[#17243A] hover:scale-103"><span
                     class="text-center">◷</span>Historique</a>
         </nav>
 
     </footer>
     <script src="./src/data.js"></script>
-    <script src="./src/profile.js"></script>
+    <script  type="module" src="./src/main.js"></script>
 </body>
 
 </html>

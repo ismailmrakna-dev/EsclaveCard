@@ -1,6 +1,6 @@
 
 let selectedid=""
-function createProfiles() {
+export function createProfiles() {
     const proContainer = document.querySelector("#profiles-container")
     proContainer.innerHTML = ""
     const copy = profilesdata.slice()
@@ -45,11 +45,11 @@ function createProfiles() {
         proContainer.appendChild(profile)
     })
 }
-createProfiles()
+
 
 
 // create a profile
-function createProfile() {
+export function createProfile() {
     clearForm()
     const form = document.querySelector("#create-profile form")
     const proContainer = document.querySelector("#create-profile")
@@ -130,10 +130,9 @@ function createProfile() {
     
     
 }
-document.querySelector("#ajouterPro-btn")?.addEventListener("click", createProfile);
 
 // modify profile
-function modifyProfile(idProfile) {
+export function modifyProfile(idProfile) {
     clearForm()
     const form = document.querySelector("#create-profile form")
     const proContainer = document.querySelector("#create-profile")
@@ -243,7 +242,7 @@ function isValidNom(nom) {
 
 
 // show detail profile 
-function showprofile(prof) {
+export function showprofile(prof) {
     const show = document.querySelector("#detail-profile")
     show.innerHTML = ""
     const elem = document.createElement('div')
@@ -258,7 +257,7 @@ function showprofile(prof) {
 }
 
 /// Suprimmer profile
-function deleteProfile(idprofile) {
+export function deleteProfile(idprofile) {
     let index = profilesdata.find((p) => p.id === idprofile)
     if (index) {
         profilesdata = profilesdata.filter((p) => p.id !== idprofile)
@@ -266,12 +265,11 @@ function deleteProfile(idprofile) {
     createProfiles()
 }
 // select un joueur
-function selectProfile(prof) {
+export function selectProfile(prof) {
     const headerprof = document.querySelector("#header-profile")
     selectedid+=prof.id
     headerprof.innerHTML = ""
     headerprof.innerHTML = `<img class="h-7 w-7 rounded-full" src="${prof.image}" alt="">
             <span id="name-profile" class="text-lg font-semibold">${prof.nickname}</span>`
 }
-console.log(selectedid)
 
