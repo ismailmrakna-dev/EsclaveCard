@@ -1,4 +1,6 @@
-const cards = [
+
+import { compareCards } from "./game.js";
+export const cards = [
     {
         id: "esclave",
         nomcard: "Esclave",
@@ -19,32 +21,9 @@ const cards = [
     }
 ]
 
-function compareCards(playerCard, computerCard) {
-   if (playerCard === computerCard) {
-     return 0;
-   }
-   else if (playerCard === "empereur" && computerCard === "esclave") {
-        return 0;
-    }
-    else if (playerCard === "esclave" && computerCard === "empereur") {
-        return 5;
-    }
-    else if (playerCard === "empereur" && computerCard === "citoyen") {
-        return 1;
-    }
-    else if (playerCard === "citoyen" && computerCard === "empereur") {
-        return 0;
-    }
-    else if (playerCard === "esclave" && computerCard === "citoyen") {
-        return 0;
-    }
-    else if (playerCard === "citoyen" && computerCard === "esclave") {
-        return 1;
-    }
-}
 
 
-function createAllCards(camp1, camp2) {
+export function createAllCards(camp1, camp2) {
     const cardsOrdinator = document.getElementById("cards-ordinator");
     const gamep1 = document.getElementById("p-card1");
     gamep1.innerHTML = "";
@@ -59,8 +38,8 @@ function createAllCards(camp1, camp2) {
         card.innerHTML = "";
         card.used = false;
     });
-    copycamp1 = [...campEmperor];
-    copycamp2 = [...campEsclave];
+    let copycamp1 = [...campEmperor];
+    let copycamp2 = [...campEsclave];
     
 
     //// computer cards
@@ -107,7 +86,6 @@ function createAllCards(camp1, camp2) {
         })
     }
 }
-createAllCards("empereur", "esclave");
 
 function moveCard(card, targetId) {
     const target = document.getElementById(targetId);
@@ -115,7 +93,7 @@ function moveCard(card, targetId) {
     target.appendChild(card);
 }
 
-function startGame() {
+export function startGame() {
     const playc2=document.getElementById("p-card2");
     const playc1=document.getElementById("p-card1");
     playc2.innerHTML="";
@@ -135,7 +113,7 @@ function startGame() {
     console.log( "camp1:", camp1, "camp2:", camp2);
     cardsplayer.addEventListener("click", (event) => {
         const cardpla = event.target.closest(".card-player")
-        console.log( "camp1:", camp1, "camp2:", camp2);
+        console.log( "camp1:", camp1, "camp2:", camp2,"round",round);
         if(!cardpla || isplayerTurn || cardpla.used) return;
         isplayerTurn = true;
         cardpla.used = true;
@@ -155,6 +133,7 @@ function startGame() {
         setTimeout(()=>{
             playc2.innerHTML="";
             playc1.innerHTML="";}, 500)
+            cmp++;
         scoreplayer += compareCards(img.alt.toLowerCase().trim(), img1.alt.toLowerCase().trim());
         scoreordinator += compareCards(img1.alt.toLowerCase().trim(), img.alt.toLowerCase().trim());
         console.log("scoreplayer:", scoreplayer, "scoreordinator:", scoreordinator);
@@ -167,31 +146,29 @@ function startGame() {
                     return alert("Game Over");
                 }
                 if(round%3===0){let temp = camp1; camp1 = camp2; camp2 = temp;}
-                round++;
                 if(round>12) {
                     alert("Game Over");
                     return;
                 }
+                round++
                 createAllCards(camp1, camp2);
                 isplayerTurn = false;
                 
         }
         
-        cmp++;
-
-        if(cmp==5){ 
+       
+        else if(cmp==5){ 
+        round++;    
         cmp = 0;
         if(round>12) {
             alert("Game Over");
             return 
         }
         if(round%3===0){let temp = camp1; camp1 = camp2; camp2 = temp;}
-        round++;
         playc2.innerHTML="";
         playc1.innerHTML="";
         createAllCards(camp1, camp2);
-
-
+      
        }
 
        isplayerTurn = false;},2000)
@@ -199,7 +176,7 @@ function startGame() {
 
     });     
 }
-startGame()
+
 
 
 ////2 players
