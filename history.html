@@ -16,11 +16,11 @@
                     class="text-2xl text-[#A78BFA]">E-</span>Cards </h1>
         </div>
         <nav id="navigateur" class="hidden flex gap-8">
-            <a href="">Accueil</a>
+            <a href="index.html">Accueil</a>
             <a href="game.html">Jouer</a>
             <a href="profile.html">Profile</a>
             <a href="history.html">Historique</a>
-            <a href="ranking.html">Classement</a>
+            
         </nav>
         <div id="header-profile" class="flex items-center gap-2">
 
@@ -30,10 +30,10 @@
 
     <main>
         <!-- History -->
-        <div id="history-container" class="bg-[#17243A] mx-4 p-4 grid grid-cols-1">
-            <h1>Historique des Parties</h1>
-            <div>
-                <input>
+        <div id="history-container" class="bg-[#17243A] mx-auto mx-2 p-2 grid grid-cols-1 rounded-xl lg:w-3/4">
+            <h1 class="text-2xl font-bold p-2 my-4">Historique des Parties</h1>
+            <div class="border-b  border-t mb-4 pb-4 p-2 bg-[#416A9B] flex items-centers gap-2 flex-wrap rounded-md lg:gap-8">
+                <input type="search" class="mt-2 ml-4 bg-[#60A5FA] px-4 py-2 rounded-full lg:w-80 lg:p-4" placeholder="⌕ Recherche un pseudo">
                 <select name="" id="resultats-parties">
                     <option value="">Tout les Resultats</option>
                     <option value=""></option>
@@ -46,19 +46,21 @@
                 </select>
 
             </div>
-            <div id="titles-parties">
-                
+            <div id="titles-parties" class="grid grid-cols-4 mt-2 p-1 border-b">
+                <h3>Date</h3>
+                <h3>Joueur</h3>
+                <h3>Score</h3>
+                <h3>Resultat</h3>
             </div>
             <div id="parties-container">
                 
             </div>
         </div>
-
     </main>
 
     <footer class="absolute bottom-0 left-0 right-0 md:hidden lg:hidden">
         <nav id="navigateur-buttom"
-            class="bg-[#0B1220] grid grid-cols-4 gap-2 w-full shadow-md  text-lg border-t border-white/20">
+            class="bg-[#0B1220] grid grid-cols-4 gap-2 w-full shadow-md px-2 text-lg border-t border-white/20">
             <a href="index.html" class="p-2 px-2 flex flex-col hover:bg-[#17243A] hover:scale-103"><span
                     class="text-center">🏠︎</span> Accueil</a>
             <a href="game.html" class="p-2 px-4 flex flex-col hover:bg-[#17243A] hover:scale-103"><span
