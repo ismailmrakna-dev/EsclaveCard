@@ -268,12 +268,22 @@ export function deleteProfile(idprofile) {
     createProfiles()
 }
 // select un joueur
-export function selectProfile(prof) {
+export function selectProfile(prof){
+    localStorage.setItem("selected-profile",JSON.stringify(prof))
+    updateSelectProfile()
+
+}
+export function updateSelectProfile() {
+    const selected=JSON.parse(localStorage.getItem("selected-profile"))
     const headerprof = document.querySelector("#header-profile")
-    headerprof.innerHTML = ""
-    headerprof.innerHTML = `<img class="h-7 w-7 rounded-full" src="${prof.image}" alt="">
-            <span id="name-profile" class="text-lg font-semibold">${prof.nickname}</span>
-            <span id="pIdSelected" class="hidden">${prof.id}</span>`
+    if(!headerprof) return;
+    if(selected){
+        headerprof.innerHTML = ""
+        headerprof.innerHTML = `<img class="h-7 w-7 rounded-full" src="${selected.image}" alt="">
+            <span id="name-profile" class="text-lg font-semibold">${selected.nickname}</span>
+            <span id="pIdSelected" class="hidden">${selected.id}</span>`
+        }
+    else  headerprof.innerHTML = `<span class="text-gray-400">No Profile </span>`  
 }
 
 function saveProfiles(){
