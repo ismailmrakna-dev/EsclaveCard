@@ -1,7 +1,10 @@
 import { startGame, cards ,createAllCards } from "./game/card.js";
 import { compareCards } from "./game/game.js";
 import { createProfiles,updateSelectProfile ,createProfile,loadProfiles } from "./profile.js";
+import { showHistory,loadHistory } from "./history.js"
+loadHistory()
 loadProfiles()
+
 
 window.cards = cards;
 window.compareCards = compareCards;
@@ -17,6 +20,10 @@ else if(currentPages.includes("profile.html")){
 }
 else if(currentPages.includes("game.html")){
     initGamePage();
+    
+}
+else if(currentPages.includes("history.html")){
+    initHistoryPage();
     
 }
 
@@ -38,4 +45,7 @@ function initGamePage(){
     startGame()
     updateSelectProfile()
 }
-
+function initHistoryPage(){
+    console.log("History Page")
+    showHistory()
+}
