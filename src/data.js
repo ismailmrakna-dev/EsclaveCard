@@ -6,6 +6,7 @@ let profilesdata=[
                     image: './assets/avatars/saitama2-avatar.png' ,
                     stats: {
                         parties: 0,
+                        score:0,
                         vic: [],
                         draw: [],
                         lose: []
@@ -19,6 +20,7 @@ let profilesdata=[
                     image: "./assets/avatars/saitama2-avatar.png" ,
                     stats: {
                         parties: 10,
+                        score:120,
                         vic: [],
                         draw: [],
                         lose: []
