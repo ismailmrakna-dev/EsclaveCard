@@ -1,5 +1,4 @@
 
-let selectedid=""
 export function createProfiles() {
     const proContainer = document.querySelector("#profiles-container")
     proContainer.innerHTML = ""
@@ -268,9 +267,9 @@ export function deleteProfile(idprofile) {
 // select un joueur
 export function selectProfile(prof) {
     const headerprof = document.querySelector("#header-profile")
-    selectedid+=prof.id
     headerprof.innerHTML = ""
     headerprof.innerHTML = `<img class="h-7 w-7 rounded-full" src="${prof.image}" alt="">
-            <span id="name-profile" class="text-lg font-semibold">${prof.nickname}</span>`
+            <span id="name-profile" class="text-lg font-semibold">${prof.nickname}</span>
+            <span id="pIdSelected" class="hidden">${prof.id}</span>`
 }
 
