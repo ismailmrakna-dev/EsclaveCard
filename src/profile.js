@@ -1,4 +1,4 @@
-
+loadProfiles()
 export function createProfiles() {
     const proContainer = document.querySelector("#profiles-container")
     proContainer.innerHTML = ""
@@ -19,7 +19,8 @@ export function createProfiles() {
             e.stopPropagation()
             showprofile(p)
         })
-        profile.addEventListener("click",()=>{
+        profile.addEventListener("click",(e)=>{
+            e.stopPropagation()
             selectProfile(p)
         })
         const addbutton = document.createElement("button")
@@ -44,7 +45,7 @@ export function createProfiles() {
         proContainer.appendChild(profile)
     })
 }
-loadProfiles()
+
 
 
 // create a profile
@@ -115,7 +116,7 @@ export function createProfile() {
                 image: "" + selectavt.link,
                 stats: {
                     parties: 0,
-                    score,
+                    score:0,
                     vic: [],
                     draw: [],
                     lose: []
@@ -127,8 +128,8 @@ export function createProfile() {
         }
         createProfiles()
         form.reset()
+        clearForm()
     })
-    
     
 }
 
@@ -286,10 +287,10 @@ export function updateSelectProfile() {
     else  headerprof.innerHTML = `<span class="text-gray-400">No Profile </span>`  
 }
 
-function saveProfiles(){
+export function saveProfiles(){
     localStorage.setItem("profiles-Ecards", JSON.stringify(profilesdata))
 }
-function loadProfiles(){
+export function loadProfiles(){
    const savedProfiles= localStorage.getItem("profiles-Ecards")
    if(savedProfiles){
     profilesdata=JSON.parse(savedProfiles)

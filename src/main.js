@@ -1,6 +1,7 @@
 import { startGame, cards ,createAllCards } from "./game/card.js";
 import { compareCards } from "./game/game.js";
-import { createProfiles,updateSelectProfile ,createProfile,showprofile,deleteProfile,modifyProfile,selectProfile } from "./profile.js";
+import { createProfiles,updateSelectProfile ,createProfile,loadProfiles } from "./profile.js";
+loadProfiles()
 
 window.cards = cards;
 window.compareCards = compareCards;
@@ -28,6 +29,7 @@ function initHomePage(){
 function initProfilePage(){
     createProfiles()
     updateSelectProfile()
+    document.getElementById("ajouterPro-btn")?.addEventListener("click",createProfile)
     
 }
 function initGamePage(){
