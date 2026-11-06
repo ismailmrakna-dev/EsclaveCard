@@ -44,7 +44,7 @@ export function createProfiles() {
         proContainer.appendChild(profile)
     })
 }
-
+loadProfiles()
 
 
 // create a profile
@@ -123,6 +123,7 @@ export function createProfile() {
                 createAt: new Date().toJSON().slice(0,10)
             };
             profilesdata.push(profile);
+            saveProfiles()
         }
         createProfiles()
         form.reset()
@@ -211,6 +212,7 @@ export function modifyProfile(idProfile) {
             profilesdata[index].nickname = nom.value
             profilesdata[index].image = selectavt.link
             profilesdata[index].avatar = selectavt.name
+            saveProfiles()
             
         }
         createProfiles()
@@ -261,6 +263,7 @@ export function deleteProfile(idprofile) {
     let index = profilesdata.find((p) => p.id === idprofile)
     if (index) {
         profilesdata = profilesdata.filter((p) => p.id !== idprofile)
+        saveProfiles()
     }
     createProfiles()
 }
@@ -273,3 +276,12 @@ export function selectProfile(prof) {
             <span id="pIdSelected" class="hidden">${prof.id}</span>`
 }
 
+function saveProfiles(){
+    localStorage.setItem("profiles-Ecards", JSON.stringify(profilesdata))
+}
+function loadProfiles(){
+   const savedProfiles= localStorage.getItem("profiles-Ecards")
+   if(savedProfiles){
+    profilesdata=JSON.parse(savedProfiles)
+   }
+}
