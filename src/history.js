@@ -1,4 +1,4 @@
-function showHistory(){
+export function showHistory(){
     const conHistory=document.getElementById("parties-container");
     const copy=historydata.slice()
     copy.forEach(ele => {
@@ -13,8 +13,7 @@ function showHistory(){
         conHistory.appendChild(game);
     });
 }
-showHistory()
-function createHistory(playerId,playerScore,computerScore,resultat){
+export function createHistory(playerId,playerScore,computerScore,resultat){
     const obj={
         id:`g_${Date.now()}` ,
         playerId: playerId,
@@ -25,10 +24,10 @@ function createHistory(playerId,playerScore,computerScore,resultat){
        }
     return obj;   
 }
-function saveHistory(){
+export function saveHistory(){
     localStorage.setItem("history-Ecards",JSON.stringify(historydata))
 }
-function loadHistory(){
+export function loadHistory(){
     const hisD= localStorage.getItem("history-Ecards")
     historydata=JSON.parse(hisD)
 }
