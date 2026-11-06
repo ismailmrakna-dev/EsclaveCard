@@ -14,3 +14,14 @@ function showHistory(){
     });
 }
 showHistory()
+function createHistory(playerId,playerScore,computerScore,resultat){
+    const obj={
+        id:`g_${Date.now()}` ,
+        playerId: playerId,
+        date:new Date().toJSON(),
+        playerScore: playerScore,
+        computerScore: computerScore,
+        result: resultat     // "victoire", "défaite" ou "égalité"
+       }
+    return obj;   
+}
