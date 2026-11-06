@@ -1,6 +1,7 @@
 
-import { saveProfiles } from "../profile.js";
+import { createProfiles, saveProfiles } from "../profile.js";
 import { compareCards, duel } from "./game.js";
+import { createHistory , saveHistory, showHistory } from "../history.js";
 export const cards = [
     {
         id: "esclave",
@@ -122,14 +123,18 @@ export function startGame() {
         if(round>12) {
                     let result=duel(scoreplayer,scoreordinator)
                     const his=createHistory(profilesdata[indexPlayer].id,scoreplayer,scoreordinator,result)
-                    historydata.pushState(his)
+                    historydata.push(his)
+                    saveHistory()
+                    console.log(historydata)
                     profilesdata[indexPlayer].stats.parties +=1
                     profilesdata[indexPlayer].stats.score +=scoreplayer
                     if(result==="Egalite") profilesdata[indexPlayer].stats.draw.push(scoreplayer)
                     else if (result==="Victoire") profilesdata[indexPlayer].stats.vic.push(scoreplayer)
                     else if (result==="Defaite") profilesdata[indexPlayer].stats.lose.push(scoreplayer)
-
+                    console.log(profilesdata[indexPlayer])
                     saveProfiles()
+                    showHistory()
+                    createProfiles()
                     alert("Game Over");
                     return;
                 }
