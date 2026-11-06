@@ -1,6 +1,6 @@
 function showHistory(){
     const conHistory=document.getElementById("parties-container");
-    const copy=history.slice()
+    const copy=historydata.slice()
     copy.forEach(ele => {
         const pro=profilesdata.find((pl)=>pl.id===ele.playerId)
         const game=document.createElement("div")
@@ -24,4 +24,11 @@ function createHistory(playerId,playerScore,computerScore,resultat){
         result: resultat     // "victoire", "défaite" ou "égalité"
        }
     return obj;   
+}
+function saveHistory(){
+    localStorage.setItem("history-Ecards",JSON.stringify(historydata))
+}
+function loadHistory(){
+    const hisD= localStorage.getItem("history-Ecards")
+    historydata=JSON.parse(hisD)
 }

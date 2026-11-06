@@ -31,7 +31,7 @@ let profilesdata=[
             
             
             ]
-let history=[
+let historydata=[
     {
   id: "g_1730115600000",
   playerId: "115",

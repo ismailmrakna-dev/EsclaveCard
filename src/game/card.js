@@ -122,13 +122,13 @@ export function startGame() {
         if(round>12) {
                     let result=duel(scoreplayer,scoreordinator)
                     const his=createHistory(profilesdata[indexPlayer].id,scoreplayer,scoreordinator,result)
-                    history.pushState(his)
+                    historydata.pushState(his)
                     profilesdata[indexPlayer].stats.parties +=1
                     profilesdata[indexPlayer].stats.score +=scoreplayer
                     if(result==="Egalite") profilesdata[indexPlayer].stats.draw.push(scoreplayer)
                     else if (result==="Victoire") profilesdata[indexPlayer].stats.vic.push(scoreplayer)
                     else if (result==="Defaite") profilesdata[indexPlayer].stats.lose.push(scoreplayer)
-                
+
                     saveProfiles()
                     alert("Game Over");
                     return;
