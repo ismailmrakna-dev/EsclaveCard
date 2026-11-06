@@ -1,5 +1,6 @@
 
-import { compareCards } from "./game.js";
+import { saveProfiles } from "../profile.js";
+import { compareCards, duel } from "./game.js";
 export const cards = [
     {
         id: "esclave",
@@ -100,6 +101,9 @@ export function startGame() {
     playc1.innerHTML="";
 
     const cardsplayer = document.getElementById("cards-player");
+    const selected=JSON.parse(localStorage.getItem("selected-profile"))
+    const indexPlayer=profilesdata.findIndex((p)=>p.id.trim()===selected.id.trim())
+    console.log(selected,indexPlayer)
     
     let camp1 = "empereur";
     let camp2 = "esclave";
@@ -115,6 +119,21 @@ export function startGame() {
         const cardpla = event.target.closest(".card-player")
         console.log( "camp1:", camp1, "camp2:", camp2,"round",round);
         if(!cardpla || isplayerTurn || cardpla.used) return;
+        if(round>12) {
+                    let result=duel(scoreplayer,scoreordinator)
+                    const his=createHistory(profilesdata[indexPlayer].id,scoreplayer,scoreordinator,result)
+                    history.pushState(his)
+                    profilesdata[indexPlayer].stats.parties +=1
+                    profilesdata[indexPlayer].stats.score +=scoreplayer
+                    if(result==="Egalite") profilesdata[indexPlayer].stats.draw.push(scoreplayer)
+                    else if (result==="Victoire") profilesdata[indexPlayer].stats.vic.push(scoreplayer)
+                    else if (result==="Defaite") profilesdata[indexPlayer].stats.lose.push(scoreplayer)
+                
+                    saveProfiles()
+                    alert("Game Over");
+                    return;
+                }
+                
         isplayerTurn = true;
         cardpla.used = true;
         const img = cardpla.querySelector("img");
@@ -142,14 +161,9 @@ export function startGame() {
          || (img.alt.toLowerCase().trim()==='empereur' && img1.alt.toLowerCase().trim()==='citoyen') || (img.alt.toLowerCase().trim()==='citoyen' && img1.alt.toLowerCase().trim()==='empereur'
          ) || (img.alt.toLowerCase().trim()==='esclave' && img1.alt.toLowerCase().trim()==='citoyen') || (img.alt.toLowerCase().trim()==='citoyen' && img1.alt.toLowerCase().trim()==='esclave')) {
             
-                if(round>12) {
-                    return alert("Game Over");
-                }
+                
                 if(round%3===0){let temp = camp1; camp1 = camp2; camp2 = temp;}
-                if(round>12) {
-                    alert("Game Over");
-                    return;
-                }
+                
                 round++
                 createAllCards(camp1, camp2);
                 isplayerTurn = false;
@@ -160,10 +174,7 @@ export function startGame() {
         else if(cmp==5){ 
         round++;    
         cmp = 0;
-        if(round>12) {
-            alert("Game Over");
-            return 
-        }
+        
         if(round%3===0){let temp = camp1; camp1 = camp2; camp2 = temp;}
         playc2.innerHTML="";
         playc1.innerHTML="";
