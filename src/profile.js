@@ -110,17 +110,18 @@ export function createProfile() {
 
         if (isValid) {
             const profile = {
-                id: "125",
+                id: `p_${Date.now()}`,
                 nickname: nom.value,
                 avatar: "" + selectavt.name,
                 image: "" + selectavt.link,
                 stats: {
                     parties: 0,
+                    score,
                     vic: [],
                     draw: [],
                     lose: []
                 },
-                createAt: "",
+                createAt: new Date().toJSON().slice(0,10)
             };
             profilesdata.push(profile);
         }
