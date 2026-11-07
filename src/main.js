@@ -46,6 +46,7 @@ function initGamePage(){
     updateSelectProfile()
 }
 function initHistoryPage(){
+    loadHistory()
     console.log("History Page")
     showHistory()
 }
