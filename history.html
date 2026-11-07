@@ -33,16 +33,18 @@
         <div id="history-container" class="bg-[#17243A] mx-auto mx-2 p-2 grid grid-cols-1 rounded-xl lg:w-3/4">
             <h1 class="text-2xl font-bold p-2 my-4">Historique des Parties</h1>
             <div class="border-b  border-t mb-4 pb-4 p-2 bg-[#416A9B] flex items-centers gap-2 flex-wrap rounded-md lg:gap-8">
-                <input type="search" class="mt-2 ml-4 bg-[#60A5FA] px-4 py-2 rounded-full lg:w-80 lg:p-4" placeholder="⌕ Recherche un pseudo">
+                <input id="search-history" type="search" class="mt-2 ml-4 bg-[#60A5FA] px-4 py-2 rounded-full lg:w-80 lg:p-4" placeholder="⌕ Recherche un pseudo">
                 <select name="" id="resultats-parties">
                     <option value="">Tout les Resultats</option>
-                    <option value=""></option>
-                    <option value=""></option>
-                    <option value=""></option>
+                    <option value="victoire">victoire</option>
+                    <option value="egalite">égalité</option>
+                    <option value="defaite">défaite</option>
                 </select>
                 <select name="" id="dates-parties">
                     <option value="">Tout les date</option>
-                    <option value=""></option>
+                    <option value="1">dernier jour</option>
+                    <option value="3">3 jours</option>
+                    <option value="7">1 semaine</option>
                 </select>
 
             </div>
