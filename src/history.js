@@ -56,24 +56,24 @@ function filterSearch(){
     })
     
 }
-// function filterDate(){
-//     const conHistory=document.getElementById("parties-container");
-//     const resultSelect=document.querySelector("#resultats-parties")
-//     const datesSelect=document.querySelector("#dates-parties")
-//     datesSelect.addEventListener("click",(e)=>{
-//         const sDate=e.target.value
-//         if(sDate=""){
-//             conHistory.innerHTML=""
-//             showHistory(historydata)
-//             return
-//         }
-//         conHistory.innerHTML=""
-//         showHistory(historydata.filter((his)=>his.date.getdate()===(his.date.getdate()-parseInt(sDate))))
+function filterDate(){
+    const conHistory=document.getElementById("parties-container");
+    const resultSelect=document.querySelector("#resultats-parties")
+    const datesSelect=document.querySelector("#dates-parties")
+    datesSelect.addEventListener("click",(e)=>{
+        const sDate=e.target.value
+        if(sDate=""){
+            conHistory.innerHTML=""
+            showHistory(historydata)
+            return
+        }
+        conHistory.innerHTML=""
+        showHistory(historydata.filter((his)=>his.date.getdate()===(his.date.getdate()-parseInt(sDate))))
         
-//     })
+    })
     
-// }
-// function filterDate(){
+}
+// function filterResult(){
 //     const conHistory=document.getElementById("parties-container");
 //     const resultSelect=document.querySelector("#resultats-parties")
     
