@@ -1,7 +1,9 @@
 
-import { createProfiles, saveProfiles } from "../profile.js";
+import { createProfiles, saveProfiles,loadProfiles } from "../profile.js";
 import { compareCards, duel } from "./game.js";
-import { createHistory , saveHistory, showHistory } from "../history.js";
+import { createHistory , saveHistory, showHistory,loadHistory } from "../history.js";
+loadHistory()
+loadProfiles()
 export const cards = [
     {
         id: "esclave",
@@ -96,6 +98,16 @@ function moveCard(card, targetId) {
 }
 
 export function startGame() {
+    
+    const manche=document.getElementById("Manche")
+    const tour=document.getElementById("round")
+    const comScore=document.getElementById("computer-score")
+    const comCamp=document.getElementById("computer-camp")
+    const avtPl=document.getElementById("player-avt")
+    const namePl=document.getElementById("player-name")
+    const plScore=document.getElementById("player-score")
+    const plCamp=document.getElementById("player-camp")
+
     const playc2=document.getElementById("p-card2");
     const playc1=document.getElementById("p-card1");
     playc2.innerHTML="";
@@ -104,19 +116,32 @@ export function startGame() {
     const cardsplayer = document.getElementById("cards-player");
     const selected=JSON.parse(localStorage.getItem("selected-profile"))
     const indexPlayer=profilesdata.findIndex((p)=>p.id.trim()===selected.id.trim())
-    console.log(selected,indexPlayer)
     
+    avtPl.src=`${profilesdata[indexPlayer].image}`
+    namePl.textContent=`${profilesdata[indexPlayer].nickname}`
     let camp1 = "empereur";
     let camp2 = "esclave";
     
     let round = 1;
+    let tours=1
     let cmp = 0;
     let isplayerTurn = false;
     let scoreordinator = 0;
     let scoreplayer = 0;
+    comScore.textContent=`Score: ${scoreordinator}`
+    plScore.textContent=`Score: ${scoreplayer}`
+    comCamp.textContent=`Camp: ${camp1}`
+    plCamp.textContent= `Camp: ${camp2}`
+    tour.textContent=`Tour: ${tours}/4`
+    manche.textContent=`Manche: ${round}/12`
+    
     createAllCards(camp1, camp2);
     console.log( "camp1:", camp1, "camp2:", camp2);
     cardsplayer.addEventListener("click", (event) => {
+        manche.textContent=`Manche: ${round}/12`
+        
+        
+       
         const cardpla = event.target.closest(".card-player")
         console.log( "camp1:", camp1, "camp2:", camp2,"round",round);
         if(!cardpla || isplayerTurn || cardpla.used) return;
@@ -146,7 +171,11 @@ export function startGame() {
         setTimeout(()=>{
         const cardsOrdinator = document.querySelectorAll("#cards-ordinator .card-ordinator");
         const copycardsOrdinator = [...cardsOrdinator].filter(card => !card.used);
-        if(copycardsOrdinator.length === 0) {  isplayerTurn = false; return; }  
+        if(copycardsOrdinator.length === 0) {  isplayerTurn = false; return; } 
+        
+
+
+
 
         const  randomIndex = Math.floor(Math.random() * copycardsOrdinator.length);
         const cd = copycardsOrdinator[randomIndex]
@@ -160,16 +189,18 @@ export function startGame() {
             cmp++;
         scoreplayer += compareCards(img.alt.toLowerCase().trim(), img1.alt.toLowerCase().trim());
         scoreordinator += compareCards(img1.alt.toLowerCase().trim(), img.alt.toLowerCase().trim());
+        comScore.textContent=`Score: ${scoreordinator}`
+        plScore.textContent=`Score: ${scoreplayer}`
         console.log("scoreplayer:", scoreplayer, "scoreordinator:", scoreordinator);
         setTimeout(()=>{
         if((img.alt.toLowerCase().trim()==='empereur' && img1.alt.toLowerCase().trim()==='esclave') || (img.alt.toLowerCase().trim()==='esclave' && img1.alt.toLowerCase().trim()==='empereur')
          || (img.alt.toLowerCase().trim()==='empereur' && img1.alt.toLowerCase().trim()==='citoyen') || (img.alt.toLowerCase().trim()==='citoyen' && img1.alt.toLowerCase().trim()==='empereur'
          ) || (img.alt.toLowerCase().trim()==='esclave' && img1.alt.toLowerCase().trim()==='citoyen') || (img.alt.toLowerCase().trim()==='citoyen' && img1.alt.toLowerCase().trim()==='esclave')) {
-            
-                
+               cmp=0
                 if(round%3===0){let temp = camp1; camp1 = camp2; camp2 = temp;}
                 
                 round++
+                manche.textContent=`Manche: ${round}/12`
                 createAllCards(camp1, camp2);
                 isplayerTurn = false;
                 
@@ -177,13 +208,18 @@ export function startGame() {
         
        
         else if(cmp==5){ 
-        round++;    
+        round++;   
+        manche.textContent=`Manche: ${round}/12` 
         cmp = 0;
-        
-        if(round%3===0){let temp = camp1; camp1 = camp2; camp2 = temp;}
+
+        if(round%3===0){let temp = camp1; camp1 = camp2; camp2 = temp;
+            comCamp.textContent=`Camp: ${camp1}`
+            plCamp.textContent= `Camp: ${camp2}`
+        }
         playc2.innerHTML="";
         playc1.innerHTML="";
         createAllCards(camp1, camp2);
+        tour.textContent=tours+1
       
        }
 
