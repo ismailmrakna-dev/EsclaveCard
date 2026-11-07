@@ -73,20 +73,20 @@ function filterDate(){
     })
     
 }
-// function filterResult(){
-//     const conHistory=document.getElementById("parties-container");
-//     const resultSelect=document.querySelector("#resultats-parties")
+function filterResult(){
+    const conHistory=document.getElementById("parties-container");
+    const resultSelect=document.querySelector("#resultats-parties")
     
-//     resultSelect.addEventListener("click",(e)=>{
-//         const sResult=e.target.value.toLowerCase().trim()
-//         if(sResult=""){
-//             conHistory.innerHTML=""
-//             showHistory(historydata)
-//             return
-//         }
-//         conHistory.innerHTML=""
-//         showHistory(historydata.filter((his)=>his.result===sResult))
+    resultSelect.addEventListener("click",(e)=>{
+        const sResult=e.target.value.toLowerCase().trim()
+        if(sResult=""){
+            conHistory.innerHTML=""
+            showHistory(historydata)
+            return
+        }
+        conHistory.innerHTML=""
+        showHistory(historydata.filter((his)=>his.result===sResult))
         
-//     })
+    })
     
-// }
+}
