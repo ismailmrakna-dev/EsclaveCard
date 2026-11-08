@@ -32,7 +32,7 @@ export function loadHistory(){
     historydata=JSON.parse(hisD)
 }
 
-function filterSearch(){
+export function filterSearch(){
     const conHistory=document.getElementById("parties-container");
     const resultSelect=document.querySelector("#resultats-parties")
     const datesSelect=document.querySelector("#dates-parties")
@@ -41,12 +41,11 @@ function filterSearch(){
     
     search.addEventListener("input",(e)=>{
         const sName=e.target.value.toLowerCase().trim()
-        if(sName=""){
+        if(sName===""){
             conHistory.innerHTML=""
             showHistory(historydata)
             return
         }
-        
         conHistory.innerHTML=""
         profilesdata.forEach((p)=>{
             if(p.nickname.toLowerCase().includes(sName)){
@@ -56,13 +55,13 @@ function filterSearch(){
     })
     
 }
-function filterDate(){
+export function filterDate(){
     const conHistory=document.getElementById("parties-container");
     const resultSelect=document.querySelector("#resultats-parties")
     const datesSelect=document.querySelector("#dates-parties")
     datesSelect.addEventListener("click",(e)=>{
         const sDate=e.target.value
-        if(sDate=""){
+        if(sDate===""){
             conHistory.innerHTML=""
             showHistory(historydata)
             return
@@ -73,19 +72,19 @@ function filterDate(){
     })
     
 }
-function filterResult(){
+export function filterResult(){
     const conHistory=document.getElementById("parties-container");
     const resultSelect=document.querySelector("#resultats-parties")
     
     resultSelect.addEventListener("click",(e)=>{
         const sResult=e.target.value.toLowerCase().trim()
-        if(sResult=""){
+        if(sResult===""){
             conHistory.innerHTML=""
             showHistory(historydata)
             return
         }
         conHistory.innerHTML=""
-        showHistory(historydata.filter((his)=>his.result===sResult))
+        showHistory(historydata.filter((his)=>his.result.toLowerCase().trim()===sResult))
         
     })
     
