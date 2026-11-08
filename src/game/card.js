@@ -53,7 +53,8 @@ export function createAllCards(camp1, camp2) {
             const cd = cards.find(c => c.id.toLowerCase().trim() === copycamp1[randomIndex].toLowerCase().trim());
             copycamp1.splice(randomIndex, 1);
             card.innerHTML = `
-               <img src="${cd.image}" alt="${cd.nomcard}" class="card-front w-full h-full">
+               <img src="${cd.image}" alt="${cd.nomcard}" class="hidden card-front w-full h-full">
+               <img src="${cd.back}" alt="${cd.nomcard}" class="card-back w-full h-full">
                `;
         });
     }
@@ -63,7 +64,8 @@ export function createAllCards(camp1, camp2) {
             const cd = cards.find(c => c.id.toLowerCase().trim() === copycamp2[randomIndex].toLowerCase().trim());
             copycamp2.splice(randomIndex, 1);
             card.innerHTML = `
-               <img src="${cd.image}" alt="${cd.nomcard}" class="card-front w-full h-full">
+               <img src="${cd.image}" alt="${cd.nomcard}" class="hidden card-front w-full h-full">
+               <img src="${cd.back}" alt="${cd.nomcard}" class="card-back w-full h-full">
                `;
         })
     }
@@ -75,6 +77,7 @@ export function createAllCards(camp1, camp2) {
         copycamp1.splice(randomIndex, 1);
         card.innerHTML = `
             <img src="${cd.image}" alt="${cd.nomcard}" class="card-front w-full h-full">
+            
         `;
 
         });
@@ -86,6 +89,7 @@ export function createAllCards(camp1, camp2) {
             copycamp2.splice(randomIndex, 1);
             card.innerHTML = `
                 <img src="${cd.image}" alt="${cd.nomcard}" class="card-front w-full h-full">
+                
             `;
         })
     }
@@ -125,6 +129,191 @@ export function startGame() {
     let round = 1;
     let tours=1
     let cmp = 0;
+    let isplayerTurn = false;
+    let scoreordinator = 0;
+    let scoreplayer = 0;
+    comScore.textContent=`Score: ${scoreordinator}`
+    plScore.textContent=`Score: ${scoreplayer}`
+    comCamp.textContent=`Camp: ${camp1}`
+    plCamp.textContent= `Camp: ${camp2}`
+    tour.textContent=`Tour: ${tours}/4`
+    manche.textContent=`Manche: ${round}/12`
+    
+    createAllCards(camp1, camp2);
+    console.log( "camp1:", camp1, "camp2:", camp2);
+    cardsplayer.addEventListener("click", (event) => {
+        manche.textContent=`Manche: ${round}/12`
+        
+        
+       
+        const cardpla = event.target.closest(".card-player")
+        console.log( "camp1:", camp1, "camp2:", camp2,"round",round);
+        if(!cardpla || isplayerTurn || cardpla.used) return;
+        if(round>12) {
+                    let result=duel(scoreplayer,scoreordinator)
+                    const his=createHistory(profilesdata[indexPlayer].id,scoreplayer,scoreordinator,result)
+                    historydata.push(his)
+                    saveHistory()
+                    console.log(historydata)
+                    profilesdata[indexPlayer].stats.parties +=1
+                    profilesdata[indexPlayer].stats.score +=scoreplayer
+                    if(result==="Egalite") profilesdata[indexPlayer].stats.draw.push(scoreplayer)
+                    else if (result==="Victoire") profilesdata[indexPlayer].stats.vic.push(scoreplayer)
+                    else if (result==="Defaite") profilesdata[indexPlayer].stats.lose.push(scoreplayer)
+                    console.log(profilesdata[indexPlayer])
+                    saveProfiles()
+                    showHistory()
+                    createProfiles()
+                    alert("Game Over");
+                    return;
+                }
+                
+        isplayerTurn = true;
+        cardpla.used = true;
+        const img = cardpla.querySelector("img");
+        moveCard(img, "p-card2");
+        setTimeout(()=>{
+        const cardsOrdinator = document.querySelectorAll("#cards-ordinator .card-ordinator");
+        const copycardsOrdinator = [...cardsOrdinator].filter(card => !card.used);
+        if(copycardsOrdinator.length === 0) {  isplayerTurn = false; return; } 
+        
+
+
+
+
+        const  randomIndex = Math.floor(Math.random() * copycardsOrdinator.length);
+        const cd = copycardsOrdinator[randomIndex]
+        
+        cd.used=true;
+        const img1 = cd.querySelector(".card-front");
+        img1.classList.remove("hidden")
+        const img1back = cd.querySelector(".card-back");
+        img1back.classList.add("hidden")
+        moveCard(img1, "p-card1");
+        setTimeout(()=>{
+            playc2.innerHTML="";
+            playc1.innerHTML="";}, 500)
+            cmp++;
+        scoreplayer += compareCards(img.alt.toLowerCase().trim(), img1.alt.toLowerCase().trim());
+        scoreordinator += compareCards(img1.alt.toLowerCase().trim(), img.alt.toLowerCase().trim());
+        comScore.textContent=`Score: ${scoreordinator}`
+        plScore.textContent=`Score: ${scoreplayer}`
+        console.log("scoreplayer:", scoreplayer, "scoreordinator:", scoreordinator);
+        setTimeout(()=>{
+        if((img.alt.toLowerCase().trim()==='empereur' && img1.alt.toLowerCase().trim()==='esclave') || (img.alt.toLowerCase().trim()==='esclave' && img1.alt.toLowerCase().trim()==='empereur')
+         || (img.alt.toLowerCase().trim()==='empereur' && img1.alt.toLowerCase().trim()==='citoyen') || (img.alt.toLowerCase().trim()==='citoyen' && img1.alt.toLowerCase().trim()==='empereur'
+         ) || (img.alt.toLowerCase().trim()==='esclave' && img1.alt.toLowerCase().trim()==='citoyen') || (img.alt.toLowerCase().trim()==='citoyen' && img1.alt.toLowerCase().trim()==='esclave')) {
+               cmp=0
+                if(round%3===0){let temp = camp1; camp1 = camp2; camp2 = temp;}
+                
+                round++
+                manche.textContent=`Manche: ${round}/12`
+                createAllCards(camp1, camp2);
+                isplayerTurn = false;
+                
+        }
+        
+       
+        else if(cmp==5){ 
+        round++;   
+        manche.textContent=`Manche: ${round}/12` 
+        cmp = 0;
+
+        if(round%3===0){let temp = camp1; camp1 = camp2; camp2 = temp;
+            comCamp.textContent=`Camp: ${camp1}`
+            plCamp.textContent= `Camp: ${camp2}`
+        }
+        playc2.innerHTML="";
+        playc1.innerHTML="";
+        createAllCards(camp1, camp2);
+        tour.textContent=tours+1
+      
+       }
+
+       isplayerTurn = false;},2000)
+        },1500)
+
+    });     
+}
+
+
+
+//2 players
+// function gameTwoPlayer() {
+    
+//     const cardsplayer2 = document.getElementById("cards-ordinator");
+//     const cardsplayer = document.getElementById("cards-player");
+    
+//     let camp1 = "empereur";
+//     let camp2 = "esclave";
+//     createAllCards(camp1, camp2);
+//     let round = 1;
+//     let cmp = 0;
+//     console.log( "camp1:", camp1, "camp2:", camp2);
+//     let turnPl1=true
+//     let turnPl2=false
+//     cardsplayer2.addEventListener("click", (event) => {
+//         const cardOr = event.target.closest(".card-ordinator")
+//         const img = cardOr.querySelector("img");
+//         cmp++;
+//         if(round>12) {
+//             return alert("Game Over");
+//         }
+//         console.log("cmp:", cmp);
+//         moveCard(img, "p-card1");
+//         if(cmp==5){ 
+//         cmp = 0;
+//         if(round%3===0){let temp = camp1; camp1 = camp2; camp2 = temp;}
+//         createAllCards(camp1, camp2);
+//         round++;
+//     }
+//     cardsplayer.addEventListener("click", (e) => {
+//         const cardPl = e.target.closest(".card-player");
+//         console.log(cardPl);
+//         const img = cardPl.querySelector("img");
+//         moveCard(img, "p-card2");
+//         })
+    
+//     });
+//     // cardsplayer.addEventListener("click", (e) => {
+//     //     const cardPl = e.target.closest(".card-player");
+//     //     console.log(cardPl);
+//     //     const img = cardPl.querySelector("img");
+//     //     moveCard(img, "p-card2");
+//     //     })
+       
+// }
+
+export function  gameTwoPlayer() {
+    
+    const manche=document.getElementById("Manche")
+    const tour=document.getElementById("round")
+    const comScore=document.getElementById("computer-score")
+    const comCamp=document.getElementById("computer-camp")
+    const avtPl=document.getElementById("player-avt")
+    const namePl=document.getElementById("player-name")
+    const plScore=document.getElementById("player-score")
+    const plCamp=document.getElementById("player-camp")
+
+    const playc2=document.getElementById("p-card2");
+    const playc1=document.getElementById("p-card1");
+    playc2.innerHTML="";
+    playc1.innerHTML="";
+
+    const cardsplayer = document.getElementById("cards-player");
+    const selected=JSON.parse(localStorage.getItem("selected-profile"))
+    const indexPlayer=profilesdata.findIndex((p)=>p.id.trim()===selected.id.trim())
+    
+    avtPl.src=`${profilesdata[indexPlayer].image}`
+    namePl.textContent=`${profilesdata[indexPlayer].nickname}`
+    let camp1 = "empereur";
+    let camp2 = "esclave";
+    
+    let round = 1;
+    let tours=1
+    let cmp = 0;
+    let turnPl1=true
+    let turnPl2=false
     let isplayerTurn = false;
     let scoreordinator = 0;
     let scoreplayer = 0;
@@ -228,54 +417,6 @@ export function startGame() {
 
     });     
 }
-
-
-
-////2 players
-// function startGame() {
-    
-//     const cardsOrdinator = document.getElementById("cards-ordinator");
-//     const cardsplayer = document.getElementById("cards-player");
-    
-//     let camp1 = "empereur";
-//     let camp2 = "esclave";
-//     createAllCards(camp1, camp2);
-//     let round = 1;
-//         let cmp = 0;
-//         console.log( "camp1:", camp1, "camp2:", camp2);
-//     cardsOrdinator.addEventListener("click", (event) => {
-//         const cardOr = event.target.closest(".card-ordinator")
-//         const img = cardOr.querySelector("img");
-//         cmp++;
-//         if(round>12) {
-//             return alert("Game Over");
-//         }
-//         console.log("cmp:", cmp);
-//         moveCard(img, "p-card1");
-//         if(cmp==5){ 
-//         cmp = 0;
-//         if(round%3===0){let temp = camp1; camp1 = camp2; camp2 = temp;}
-//         createAllCards(camp1, camp2);
-//         round++;
-//     }
-//     cardsplayer.addEventListener("click", (e) => {
-//         const cardPl = e.target.closest(".card-player");
-//         console.log(cardPl);
-//         const img = cardPl.querySelector("img");
-//         moveCard(img, "p-card2");
-//         })
-    
-//     });
-//     // cardsplayer.addEventListener("click", (e) => {
-//     //     const cardPl = e.target.closest(".card-player");
-//     //     console.log(cardPl);
-//     //     const img = cardPl.querySelector("img");
-//     //     moveCard(img, "p-card2");
-//     //     })
-       
-// }
-
-
 
 
 
