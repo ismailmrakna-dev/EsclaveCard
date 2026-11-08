@@ -61,13 +61,23 @@ export function filterDate(){
     const datesSelect=document.querySelector("#dates-parties")
     datesSelect.addEventListener("click",(e)=>{
         const sDate=e.target.value
+        
+        console.log(parseInt(sDate))
         if(sDate===""){
             conHistory.innerHTML=""
             showHistory(historydata)
             return
         }
+        const today=new Date()
+
         conHistory.innerHTML=""
-        showHistory(historydata.filter((his)=>his.date.getdate()===(his.date.getdate()-parseInt(sDate))))
+        showHistory(historydata.filter((his)=>{
+            const hisdate=new Date(his.date)
+            if(isNaN(hisdate.getTime())) return false
+            const diffMs=today-hisdate
+            const diffDays=diffMs/(1000*60*60*24)
+            return diffDays<=parseInt(sDate) && diffDays>=0;
+        }))
         
     })
     
@@ -78,6 +88,7 @@ export function filterResult(){
     
     resultSelect.addEventListener("click",(e)=>{
         const sResult=e.target.value.toLowerCase().trim()
+        
         if(sResult===""){
             conHistory.innerHTML=""
             showHistory(historydata)
