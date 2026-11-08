@@ -22,7 +22,7 @@ export function compareCards(playerCard, computerCard) {
     }
 }
 export function duel(scorePlayer, scoreOrdinator){
-    if(scorePlayer === scoreOrdinator) return "Egalite"
-    else if(scorePlayer > scoreOrdinator) return "Victoire"
-    else if(scorePlayer < scoreOrdinator) return "Defaite"
+    if(scorePlayer === scoreOrdinator) return "egalite"
+    else if(scorePlayer > scoreOrdinator) return "victoire"
+    else if(scorePlayer < scoreOrdinator) return "defaite"
 }
