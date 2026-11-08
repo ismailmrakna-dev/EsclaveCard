@@ -1,7 +1,7 @@
 import { startGame, cards ,createAllCards } from "./game/card.js";
 import { compareCards } from "./game/game.js";
 import { createProfiles,updateSelectProfile ,createProfile,loadProfiles } from "./profile.js";
-import { showHistory,loadHistory } from "./history.js"
+import { showHistory,loadHistory,filterDate,filterSearch,filterResult } from "./history.js"
 loadHistory()
 loadProfiles()
 
@@ -48,5 +48,8 @@ function initGamePage(){
 function initHistoryPage(){
     loadHistory()
     console.log("History Page")
-    showHistory()
+    showHistory(historydata)
+    filterSearch()
+    filterResult()
+    filterDate()
 }
