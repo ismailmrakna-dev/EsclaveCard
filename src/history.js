@@ -62,7 +62,6 @@ export function filterDate(){
     datesSelect.addEventListener("click",(e)=>{
         const sDate=e.target.value
         
-        console.log(parseInt(sDate))
         if(sDate===""){
             conHistory.innerHTML=""
             showHistory(historydata)
@@ -99,4 +98,25 @@ export function filterResult(){
         
     })
     
+}
+
+export function rankingPlayers(){
+    const conHistory=document.getElementById("parties-container");
+    const copy=[...profilesdata]
+    copy.sort((a,b)=>b.stats.score-a.stats.score)
+    conHistory.innerHTML=""
+    copy.forEach((p,index)=>{
+        const profile = document.createElement('div')
+        profile.className = "flex items-center my-2 justify-center w-full h-30 p-4 gap-4 border-b "
+        profile.innerHTML = `
+        <p class="font-bold">Ranking: ${index+1}<p>
+        <img class="w-10 h-10 rounded-full border-white" src="${p.image}" alt="avatar ${p.avatar}">
+        <div class="flex  items-center gap-2 p-2">
+        <h2>${p.nickname}</h2>
+        <p>${p.stats.parties} Parties<p>
+        <p>Score ${p.stats.score}<p>
+        <div>
+        `
+        conHistory.appendChild(profile)
+    })
 }

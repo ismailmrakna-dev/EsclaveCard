@@ -1,7 +1,7 @@
-import { startGame, cards ,createAllCards } from "./game/card.js";
+import { startGame, cards ,createAllCards ,gameTwoPlayer} from "./game/card.js";
 import { compareCards } from "./game/game.js";
 import { createProfiles,updateSelectProfile ,createProfile,loadProfiles } from "./profile.js";
-import { showHistory,loadHistory,filterDate,filterSearch,filterResult } from "./history.js"
+import { showHistory,loadHistory,filterDate,filterSearch,filterResult, rankingPlayers } from "./history.js"
 loadHistory()
 loadProfiles()
 
@@ -43,13 +43,17 @@ function initGamePage(){
     console.log("Game Page")
     createAllCards("emperor","esclave")
     startGame()
+    
     updateSelectProfile()
 }
 function initHistoryPage(){
     loadHistory()
+    
     console.log("History Page")
     showHistory(historydata)
     filterSearch()
     filterResult()
     filterDate()
+    document.querySelector('#rank-players')?.addEventListener("click",rankingPlayers)
+    
 }

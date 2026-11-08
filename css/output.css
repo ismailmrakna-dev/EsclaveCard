@@ -733,6 +733,9 @@
     .hover\:text-gray-500:hover {
       color: var(--color-gray-500);
     }
+    .hover\:text-gray-600:hover {
+      color: var(--color-gray-600);
+    }
   }
   @media (width >= 48rem) {
     .md\:hidden {
