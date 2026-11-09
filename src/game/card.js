@@ -76,8 +76,8 @@ export function createAllCards(camp1, camp2) {
             const cd = cards.find(c => c.id.toLowerCase().trim() === copycamp1[randomIndex].toLowerCase().trim());
             copycamp1.splice(randomIndex, 1);
             card.innerHTML = `
-            <img src="${cd.image}" alt="${cd.nomcard}" class="hidden card-front w-full h-full">
-            <img src="${cd.back}" alt="${cd.nomcard}" class="card-back w-full h-full">
+            <img src="${cd.image}" alt="${cd.nomcard}" class=" card-front w-full h-full">
+            
             
         `;
 
@@ -89,8 +89,7 @@ export function createAllCards(camp1, camp2) {
             const cd = cards.find(c => c.id.toLowerCase().trim() === copycamp2[randomIndex].toLowerCase().trim());
             copycamp2.splice(randomIndex, 1);
             card.innerHTML = `
-                <img src="${cd.image}" alt="${cd.nomcard}" class="hidden card-front w-full h-full">
-                <img src="${cd.back}" alt="${cd.nomcard}" class="card-back w-full h-full">
+                <img src="${cd.image}" alt="${cd.nomcard}" class=" card-front w-full h-full">
                 
             `;
         })

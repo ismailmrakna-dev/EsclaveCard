@@ -25,7 +25,7 @@ export function createProfiles() {
         })
         const addbutton = document.createElement("button")
         addbutton.textContent = "✎"
-        addbutton.className = "btn-edit bg-[#F5B942] p-2 rounded-md text-sm font-bold text-white hover:bg-[#F5B942]/90"
+        addbutton.className = "btn-edit rounded-xl bg-[#17243A] p-2 rounded-md text-sm font-bold text-white hover:bg-[#F5B942]/90"
         addbutton.setAttribute("idMod", p.id)
         addbutton.addEventListener("click", (e) => {
             e.stopPropagation()
@@ -247,13 +247,28 @@ function isValidNom(nom) {
 // show detail profile 
 export function showprofile(prof) {
     const show = document.querySelector("#detail-profile")
+    const copy=prof.stats.vic.sort((a,b)=>b-a)
+    let hightSc =copy[0]
+    let prWin =(prof.stats.vic.length/prof.stats.parties)*100
+    let prLose=(prof.stats.lose.length/prof.stats.parties)*100
+    let prEgale=(prof.stats.draw.length/prof.stats.parties)*100
     show.innerHTML = ""
     const elem = document.createElement('div')
+    elem.className = "flex bg-[#416A9B] items-center my-2 justify-center w-full h-30 p-2 gap-4 border-b "
+    // add statistiques
     elem.innerHTML = `
         <img class="w-10 h-10 rounded-full border-white" src="${prof.image}" alt="avatar ${prof.avatar}">
-        <div class="flex flex-col items-center gap-2 p-2">
+        <div class="flex items-center gap-2 p-2">
         <h2>${prof.nickname}</h2>
         <p>${prof.stats.parties} Parties</p>
+        </div>
+        <div flex items-center flex-wrap gap-4 p-2>
+        <p class="text-green-600">Win: ${prWin}%</p>
+        <p class="text-red-600">Lose: ${prLose}%</p>
+        <p class="text-blue-600">Egalite: ${prEgale}%</p>
+        <p class="text-gray-600">High Score: ${hightSc}</p>
+        </div>
+
         `
     show.appendChild(elem)
 
