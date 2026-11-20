@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Esclave - ECards</title>
+    <link rel="stylesheet" href="./css/output.css">
+</head>
+
+<body class="min-h-screen w-screen relative m-0 bg-[url('../assets/images/bg-accueil.png')] bg-cover bg-center bg-no-repeat text-white">
+    <header class=" w-full flex flex-wrap items-center p-2 gap-4">
+        <div class=" flex items-center gap-2 p-2 mr-6">
+            <img id="logo" class="w-20 h-20" src="./assets/images/logo-web.png" alt="">
+            <h1 class="font-bold text-xl text-[#EF4444] my-auto p-2"><span
+                    class="text-2xl text-[#A78BFA]">E-</span>Cards </h1>
+        </div>
+        <nav id="navigateur" class="hidden flex gap-8">
+            <a href="index.html">Accueil</a>
+            <a href="game.html">Jouer</a>
+            <a href="profile.html">Profile</a>
+            <a href="history.html">Historique</a>
+            
+        </nav>
+        <div id="header-profile" class="flex items-center gap-2">
+
+        </div>
+        <p id="header-menu" class="absolute top-1 right-2 text-lg font-semibold">☰</p>
+    </header>
+
+    <main>
+        <!-- History -->
+        <div id="history-container" class="bg-[#17243A] mx-auto mx-2 p-2 grid grid-cols-1 rounded-xl lg:w-3/4">
+            <h1 class="text-2xl font-bold p-2 my-4">Historique des Parties</h1>
+            <div class="border-b  border-t mb-4 pb-4 p-2 bg-[#416A9B] flex items-centers gap-2 flex-wrap rounded-md lg:gap-8">
+                <input id="search-history" type="search" class="mt-2 ml-4 bg-[#60A5FA] px-4 py-2 rounded-full lg:w-80 lg:p-4" placeholder="⌕ Recherche un pseudo">
+                <select name="result-choice" class="text-black hover:text-gray-600" id="resultats-parties">
+                    <option value="">Tout les Resultats</option>
+                    <option value="victoire">victoire</option>
+                    <option value="egalite">égalité</option>
+                    <option value="defaite">défaite</option>
+                </select>
+                <select name="date-choice" class="text-black hover:text-gray-600" id="dates-parties">
+                    <option value="">Tout les date</option>
+                    <option value="1">dernier jour</option>
+                    <option value="3">3 jours</option>
+                    <option value="7">1 semaine</option>
+                    <option value="30">1 mois</option>
+                </select>
+                <button id="rank-players" type="button" class="text-black hover:text-gray-600">Ranking</button>
+
+            </div>
+            <div id="titles-parties" class="grid grid-cols-4 mt-2 p-1 border-b">
+                <h3>Date</h3>
+                <h3>Joueur</h3>
+                <h3>Score</h3>
+                <h3>Resultat</h3>
+            </div>
+            <div id="parties-container" class="my-2 grid grid-cols-1 gap-2">
+                
+            </div>
+        </div>
+    </main>
+
+    <footer class="absolute bottom-0 left-0 right-0 md:hidden lg:hidden">
+        <nav id="navigateur-buttom"
+            class="bg-[#0B1220] grid grid-cols-4 gap-2 w-full shadow-md px-2 text-lg border-t border-white/20">
+            <a href="index.html" class="p-2 px-2 flex flex-col hover:bg-[#17243A] hover:scale-103"><span
+                    class="text-center">🏠︎</span> Accueil</a>
+            <a href="game.html" class="p-2 px-4 flex flex-col hover:bg-[#17243A] hover:scale-103"><span
+                    class="text-center">▷</span>Jouer</a>
+            <a href="profile.html" class="p-2 px-4 flex flex-col hover:bg-[#17243A] hover:scale-103"><span
+                    class="text-center">♙</span>Profile</a>
+            <a href="history.html" class="p-2 px-2 flex flex-col hover:bg-[#17243A] hover:scale-103"><span
+                    class="text-center">◷</span>Historique</a>
+        </nav>
+    </footer>
+    <script src="./src/data.js"></script>
+    <script  type="module" src="./src/main.js"></script>
+    
+</body>
+</html>

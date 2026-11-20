@@ -21,4 +21,8 @@ export function compareCards(playerCard, computerCard) {
         return 1;
     }
 }
-
+export function duel(scorePlayer, scoreOrdinator){
+    if(scorePlayer === scoreOrdinator) return "egalite"
+    else if(scorePlayer > scoreOrdinator) return "victoire"
+    else if(scorePlayer < scoreOrdinator) return "defaite"
+}
